@@ -20,6 +20,7 @@
 		7C8E44481EB32A7D00BA6D76 /* predict_net.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E44471EB32A7D00BA6D76 /* predict_net.pb */; };
 		7C8E444D1EB32B2D00BA6D76 /* Caffe2.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E444C1EB32B2D00BA6D76 /* Caffe2.mm */; };
 		7C8E44521EB32EAF00BA6D76 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8E44511EB32EAF00BA6D76 /* opencv2.framework */; };
+		7C9DDAA51EB55C7E0037EC52 /* panda.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7C9DDAA41EB55C7E0037EC52 /* panda.jpeg */; };
 		7CE9854E1EB41DB700CA112F /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE9854D1EB41DB700CA112F /* libstdc++.tbd */; };
 		7CE985531EB41F8C00CA112F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE985521EB41F8C00CA112F /* Accelerate.framework */; };
 		7CE985551EB41F9400CA112F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE985541EB41F9400CA112F /* Foundation.framework */; };
@@ -48,6 +49,7 @@
 		7C8E444C1EB32B2D00BA6D76 /* Caffe2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Caffe2.mm; sourceTree = "<group>"; };
 		7C8E44501EB32C1D00BA6D76 /* caffe2-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "caffe2-ios-Bridging-Header.h"; sourceTree = "<group>"; };
 		7C8E44511EB32EAF00BA6D76 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		7C9DDAA41EB55C7E0037EC52 /* panda.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = panda.jpeg; sourceTree = "<group>"; };
 		7CE9854D1EB41DB700CA112F /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		7CE985521EB41F8C00CA112F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		7CE985541EB41F9400CA112F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -157,6 +159,7 @@
 		7CE9855A1EB4230000CA112F /* testAssets */ = {
 			isa = PBXGroup;
 			children = (
+				7C9DDAA41EB55C7E0037EC52 /* panda.jpeg */,
 				7CE985581EB422FA00CA112F /* pugs.jpg */,
 			);
 			name = testAssets;
@@ -242,6 +245,7 @@
 				7C8E44461EB32A7900BA6D76 /* exec_net.pb in Resources */,
 				7C8E44311EB329FC00BA6D76 /* Main.storyboard in Resources */,
 				7CE985591EB422FA00CA112F /* pugs.jpg in Resources */,
+				7C9DDAA51EB55C7E0037EC52 /* panda.jpeg in Resources */,
 				7C8E44481EB32A7D00BA6D76 /* predict_net.pb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

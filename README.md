@@ -28,3 +28,5 @@ This is a project to demo how to use `Caffe2`/`OpenCV 2` to build an iOS applica
 
 - [ ] Build
 
+
+##### Note: Using a large picture may result in memory issue and if you want to see it, just try the `pugs.jpg` which will crash the app.
