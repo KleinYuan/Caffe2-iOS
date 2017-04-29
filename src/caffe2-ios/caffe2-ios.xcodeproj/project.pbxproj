@@ -18,8 +18,15 @@
 		7C8E44441EB32A7000BA6D76 /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8E44401EB32A7000BA6D76 /* libprotobuf.a */; };
 		7C8E44461EB32A7900BA6D76 /* exec_net.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E44451EB32A7900BA6D76 /* exec_net.pb */; };
 		7C8E44481EB32A7D00BA6D76 /* predict_net.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E44471EB32A7D00BA6D76 /* predict_net.pb */; };
-		7C8E444D1EB32B2D00BA6D76 /* Caffe2.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E444C1EB32B2D00BA6D76 /* Caffe2.m */; };
+		7C8E444D1EB32B2D00BA6D76 /* Caffe2.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E444C1EB32B2D00BA6D76 /* Caffe2.mm */; };
 		7C8E44521EB32EAF00BA6D76 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8E44511EB32EAF00BA6D76 /* opencv2.framework */; };
+		7CE9854E1EB41DB700CA112F /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE9854D1EB41DB700CA112F /* libstdc++.tbd */; };
+		7CE985531EB41F8C00CA112F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE985521EB41F8C00CA112F /* Accelerate.framework */; };
+		7CE985551EB41F9400CA112F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE985541EB41F9400CA112F /* Foundation.framework */; };
+		7CE985571EB41F9B00CA112F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE985561EB41F9B00CA112F /* UIKit.framework */; };
+		7CE985591EB422FA00CA112F /* pugs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CE985581EB422FA00CA112F /* pugs.jpg */; };
+		7CE9855C1EB4280500CA112F /* OpenCVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CE9855B1EB4280500CA112F /* OpenCVWrapper.mm */; };
+		7CE985601EB4290D00CA112F /* UIImage+OpenCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7CE9855F1EB4290D00CA112F /* UIImage+OpenCV.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,9 +45,18 @@
 		7C8E44471EB32A7D00BA6D76 /* predict_net.pb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = predict_net.pb; sourceTree = "<group>"; };
 		7C8E44491EB32A8300BA6D76 /* Prefix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.h; sourceTree = "<group>"; };
 		7C8E444B1EB32B2D00BA6D76 /* Caffe2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Caffe2.h; sourceTree = "<group>"; };
-		7C8E444C1EB32B2D00BA6D76 /* Caffe2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Caffe2.m; sourceTree = "<group>"; };
+		7C8E444C1EB32B2D00BA6D76 /* Caffe2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Caffe2.mm; sourceTree = "<group>"; };
 		7C8E44501EB32C1D00BA6D76 /* caffe2-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "caffe2-ios-Bridging-Header.h"; sourceTree = "<group>"; };
 		7C8E44511EB32EAF00BA6D76 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		7CE9854D1EB41DB700CA112F /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		7CE985521EB41F8C00CA112F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		7CE985541EB41F9400CA112F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7CE985561EB41F9B00CA112F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7CE985581EB422FA00CA112F /* pugs.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pugs.jpg; sourceTree = "<group>"; };
+		7CE9855B1EB4280500CA112F /* OpenCVWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVWrapper.mm; sourceTree = "<group>"; };
+		7CE9855D1EB4281F00CA112F /* OpenCVWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCVWrapper.h; sourceTree = "<group>"; };
+		7CE9855E1EB428FF00CA112F /* UIImage+OpenCV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+OpenCV.h"; sourceTree = "<group>"; };
+		7CE9855F1EB4290D00CA112F /* UIImage+OpenCV.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIImage+OpenCV.mm"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +64,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CE985571EB41F9B00CA112F /* UIKit.framework in Frameworks */,
+				7CE985551EB41F9400CA112F /* Foundation.framework in Frameworks */,
+				7CE985531EB41F8C00CA112F /* Accelerate.framework in Frameworks */,
+				7CE9854E1EB41DB700CA112F /* libstdc++.tbd in Frameworks */,
 				7C8E44441EB32A7000BA6D76 /* libprotobuf.a in Frameworks */,
 				7C8E44411EB32A7000BA6D76 /* libCaffe2_CPU.a in Frameworks */,
 				7C8E44421EB32A7000BA6D76 /* libCAFFE2_NNPACK.a in Frameworks */,
@@ -64,6 +84,7 @@
 			children = (
 				7C8E442A1EB329FC00BA6D76 /* caffe2-ios */,
 				7C8E44291EB329FC00BA6D76 /* Products */,
+				7CE9854C1EB41DB700CA112F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,17 +99,11 @@
 		7C8E442A1EB329FC00BA6D76 /* caffe2-ios */ = {
 			isa = PBXGroup;
 			children = (
-				7C8E44511EB32EAF00BA6D76 /* opencv2.framework */,
+				7CE985611EB42C0C00CA112F /* wrappers */,
+				7CE9855A1EB4230000CA112F /* testAssets */,
+				7CE985501EB41E0E00CA112F /* dependencies */,
 				7C8E44501EB32C1D00BA6D76 /* caffe2-ios-Bridging-Header.h */,
-				7C8E444B1EB32B2D00BA6D76 /* Caffe2.h */,
-				7C8E444C1EB32B2D00BA6D76 /* Caffe2.m */,
-				7C8E44491EB32A8300BA6D76 /* Prefix.h */,
-				7C8E44471EB32A7D00BA6D76 /* predict_net.pb */,
-				7C8E44451EB32A7900BA6D76 /* exec_net.pb */,
-				7C8E443D1EB32A7000BA6D76 /* libCaffe2_CPU.a */,
-				7C8E443E1EB32A7000BA6D76 /* libCAFFE2_NNPACK.a */,
-				7C8E443F1EB32A7000BA6D76 /* libCAFFE2_PTHREADPOOL.a */,
-				7C8E44401EB32A7000BA6D76 /* libprotobuf.a */,
+				7CE985511EB41E2600CA112F /* models */,
 				7C8E442B1EB329FC00BA6D76 /* AppDelegate.swift */,
 				7C8E442D1EB329FC00BA6D76 /* ViewController.swift */,
 				7C8E442F1EB329FC00BA6D76 /* Main.storyboard */,
@@ -97,6 +112,68 @@
 				7C8E44371EB329FC00BA6D76 /* Info.plist */,
 			);
 			path = "caffe2-ios";
+			sourceTree = "<group>";
+		};
+		7CE9854C1EB41DB700CA112F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7CE985561EB41F9B00CA112F /* UIKit.framework */,
+				7CE985541EB41F9400CA112F /* Foundation.framework */,
+				7CE985521EB41F8C00CA112F /* Accelerate.framework */,
+				7CE9854D1EB41DB700CA112F /* libstdc++.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7CE9854F1EB41DFA00CA112F /* caffe2 */ = {
+			isa = PBXGroup;
+			children = (
+				7C8E443D1EB32A7000BA6D76 /* libCaffe2_CPU.a */,
+				7C8E443E1EB32A7000BA6D76 /* libCAFFE2_NNPACK.a */,
+				7C8E443F1EB32A7000BA6D76 /* libCAFFE2_PTHREADPOOL.a */,
+				7C8E44401EB32A7000BA6D76 /* libprotobuf.a */,
+			);
+			name = caffe2;
+			sourceTree = "<group>";
+		};
+		7CE985501EB41E0E00CA112F /* dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				7CE9854F1EB41DFA00CA112F /* caffe2 */,
+				7C8E44511EB32EAF00BA6D76 /* opencv2.framework */,
+			);
+			name = dependencies;
+			sourceTree = "<group>";
+		};
+		7CE985511EB41E2600CA112F /* models */ = {
+			isa = PBXGroup;
+			children = (
+				7C8E44471EB32A7D00BA6D76 /* predict_net.pb */,
+				7C8E44451EB32A7900BA6D76 /* exec_net.pb */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		7CE9855A1EB4230000CA112F /* testAssets */ = {
+			isa = PBXGroup;
+			children = (
+				7CE985581EB422FA00CA112F /* pugs.jpg */,
+			);
+			name = testAssets;
+			sourceTree = "<group>";
+		};
+		7CE985611EB42C0C00CA112F /* wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				7C8E44491EB32A8300BA6D76 /* Prefix.h */,
+				7CE9855B1EB4280500CA112F /* OpenCVWrapper.mm */,
+				7CE9855D1EB4281F00CA112F /* OpenCVWrapper.h */,
+				7CE9855E1EB428FF00CA112F /* UIImage+OpenCV.h */,
+				7CE9855F1EB4290D00CA112F /* UIImage+OpenCV.mm */,
+				7C8E444B1EB32B2D00BA6D76 /* Caffe2.h */,
+				7C8E444C1EB32B2D00BA6D76 /* Caffe2.mm */,
+			);
+			name = wrappers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +241,7 @@
 				7C8E44331EB329FC00BA6D76 /* Assets.xcassets in Resources */,
 				7C8E44461EB32A7900BA6D76 /* exec_net.pb in Resources */,
 				7C8E44311EB329FC00BA6D76 /* Main.storyboard in Resources */,
+				7CE985591EB422FA00CA112F /* pugs.jpg in Resources */,
 				7C8E44481EB32A7D00BA6D76 /* predict_net.pb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,8 +254,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C8E442E1EB329FC00BA6D76 /* ViewController.swift in Sources */,
+				7CE985601EB4290D00CA112F /* UIImage+OpenCV.mm in Sources */,
 				7C8E442C1EB329FC00BA6D76 /* AppDelegate.swift in Sources */,
-				7C8E444D1EB32B2D00BA6D76 /* Caffe2.m in Sources */,
+				7CE9855C1EB4280500CA112F /* OpenCVWrapper.mm in Sources */,
+				7C8E444D1EB32B2D00BA6D76 /* Caffe2.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +382,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 2K46886LCN;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/caffe2-ios",
@@ -320,6 +401,7 @@
 					"$(PROJECT_DIR)/caffe2-ios",
 				);
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-force_load",
 					"caffe2-ios/libCaffe2_CPU.a",
 				);
@@ -337,6 +419,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 2K46886LCN;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/caffe2-ios",
@@ -354,7 +437,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/caffe2-ios",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-force_load",
 					"caffe2-ios/libCaffe2_CPU.a",
 				);
@@ -384,6 +469,7 @@
 				7C8E443C1EB329FC00BA6D76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

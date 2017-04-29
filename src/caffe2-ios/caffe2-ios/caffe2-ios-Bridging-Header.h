@@ -7,3 +7,4 @@
 //
 
 #import "Caffe2.h"
+#import "OpenCVWrapper.h"
