@@ -33,8 +33,8 @@ CGContextRef CreateRGBABitmapContext (CGImageRef inImage)
     // Declare the number of bytes per row. Each pixel in the bitmap in this
     // example is represented by 4 bytes; 8 bits each of red, green, blue, and
     // alpha.
-    bitmapBytesPerRow   = (pixelsWide * 4);
-    bitmapByteCount     = (bitmapBytesPerRow * pixelsHigh);
+    bitmapBytesPerRow   = int(pixelsWide * 4);
+    bitmapByteCount     = int(bitmapBytesPerRow * pixelsHigh);
     
     // Use the generic RGB color space.
     colorSpace = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
@@ -94,6 +94,7 @@ CGContextRef CreateRGBABitmapContext (CGImageRef inImage)
     if (netName == NULL) {
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:[NSString stringWithFormat:@"File named \"%@\" not found in main bundle", name] forKey:NSLocalizedDescriptionKey];
+        NSLog(@"File named \"%@\" not found in main bundle", name);
         *error = [[NSError alloc] initWithDomain:@"Caffe2" code:1 userInfo:details];
         return nil;
     }
@@ -109,7 +110,6 @@ CGContextRef CreateRGBABitmapContext (CGImageRef inImage)
         if (initNetPath == nil || predictNetPath == nil) {
             return nil;
         }
-        
         ReadProtoIntoNet(initNetPath.UTF8String, &_initNet);
         ReadProtoIntoNet(predictNetPath.UTF8String, &_predictNet);
         
@@ -156,8 +156,8 @@ CGContextRef CreateRGBABitmapContext (CGImageRef inImage)
         caffe2::TensorCPU input;
         
         // Reasonable dimensions to feed the predictor.
-        const int predHeight = (int)CGSizeEqualToSize(self.imageInputDimensions, CGSizeZero) ? h : self.imageInputDimensions.height;
-        const int predWidth = (int)CGSizeEqualToSize(self.imageInputDimensions, CGSizeZero) ? w : self.imageInputDimensions.width;
+        const int predHeight = (int)CGSizeEqualToSize(self.imageInputDimensions, CGSizeZero) ? int(h) : self.imageInputDimensions.height;
+        const int predWidth = (int)CGSizeEqualToSize(self.imageInputDimensions, CGSizeZero) ? int(w) : self.imageInputDimensions.width;
         const int crops = 1;
         const int channels = 3;
         const int size = predHeight * predWidth;

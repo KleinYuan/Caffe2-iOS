@@ -10,8 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let predictNetName = "predict_net.pb"
-    let initNetNamed = "exec_net.pb"
+    let predictNetName = "predict_net"
+    let initNetNamed = "exec_net"
     let FoundNilErrorMsg = "[Error] Thrown"
     let testImg = "pugs.jpg"
     
