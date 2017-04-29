@@ -24,6 +24,7 @@ This is a project to demo how to use `Caffe2`/`OpenCV 2` to build an iOS applica
 
 - [ ] Disable `Bitcode`
 
-- [ ] *(by default shoud be done)* Adding `-force_load DayMaker/libCaffe2_CPU.a` to `Build Settings/Linking/Other Linker Flags`
+- [ ] *(by default shoud be done)* Adding `-force_load caffe2-ios/libCaffe2_CPU.a` to `Build Settings/Linking/Other Linker Flags` . For this [issue](https://github.com/caffe2/caffe2/issues/347)
 
 - [ ] Build
+
