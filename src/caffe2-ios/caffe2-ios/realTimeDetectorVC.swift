@@ -14,7 +14,6 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     let foundNilErrorMsg = "[Error] Thrown \n"
     let processingErrorMsg = "[Error] Processing Error \n"
-    var caffe: Caffe2?
     var result = ""
     let caffe = try! Caffe2(initNetNamed: "init_net", predictNetNamed: "predict_net")
     @IBOutlet weak var resultDisplayer: UITextView!
@@ -22,7 +21,6 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         super.viewDidLoad()
         self.setupCameraSession()
         print("Initializing ...")
-        self.initCaffe()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,17 +36,8 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         case FoundNil(String)
     }
     
-    func initCaffe() {
-        do {
-            self.caffe = try Caffe2(initNetNamed: self.initNetNamed, predictNetNamed: self.predictNetName)
-        } catch _ {
-            print("Caffe init error")
-        }
-        
-    }
-    
     func classifier(img: UIImage){
-        if let result = self.caffe?.prediction(regarding: img){
+        if let result = self.caffe.prediction(regarding: img){
             let sorted = result.map{$0.floatValue}.enumerated().sorted(by: {$0.element > $1.element})[0...10]
             let finalResult = sorted.map{"\($0.element*100)% chance to be: \(classMapping[$0.offset]!)"}.joined(separator: "\n\n")
             
