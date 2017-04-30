@@ -8,19 +8,24 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class staticDetectorVC: UIViewController {
     
     let predictNetName = "predict_net"
     let initNetNamed = "exec_net"
-    let FoundNilErrorMsg = "[Error] Thrown"
+    let foundNilErrorMsg = "[Error] Thrown"
     let testImg = "panda.jpeg"
     
     @IBOutlet weak var imageDisplayer: UIImageView!
     @IBOutlet weak var resultDisplayer: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         print("Initializing ...")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     enum CommonError: Error{
@@ -36,15 +41,18 @@ class ViewController: UIViewController {
             let caffe = try Caffe2(initNetNamed: self.initNetNamed, predictNetNamed: self.predictNetName)
             guard let testImage = #imageLiteral(resourceName: name) as? UIImage else {
                 print("Trying to load Image ...")
-                throw CommonError.FoundNil(self.FoundNilErrorMsg)
+                throw CommonError.FoundNil(self.foundNilErrorMsg)
             }
             if let result = caffe.prediction(regarding: testImage){
-                let resultString = result.flatMap{$0.floatValue}[0...10].description
-                print("Result is \n\(result)")
-                self.resultDisplayer.text = resultString
+
+                let sorted = result.map{$0.floatValue}.enumerated().sorted(by: {$0.element > $1.element})[0...10]
+                let finalResult = sorted.map{"\($0.element*100)% chance to be: \(classMapping[$0.offset]!)"}.joined(separator: "\n\n")
+                
+                print("Result is \n\(finalResult)")
+                self.resultDisplayer.text = finalResult
             }
         } catch _ {
-            print(self.FoundNilErrorMsg, "classifier function went wrong")
+            print(self.foundNilErrorMsg, "classifier function went wrong")
         }
         
     }
@@ -53,6 +61,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
 
 }
