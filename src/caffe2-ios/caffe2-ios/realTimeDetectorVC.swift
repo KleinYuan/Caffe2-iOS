@@ -14,6 +14,7 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     let foundNilErrorMsg = "[Error] Thrown \n"
     let processingErrorMsg = "[Error] Processing Error \n"
+    var caffe: Caffe2?
     var result = ""
     let caffe = try! Caffe2(initNetNamed: "init_net", predictNetNamed: "predict_net")
     @IBOutlet weak var resultDisplayer: UITextView!
@@ -21,6 +22,7 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         super.viewDidLoad()
         self.setupCameraSession()
         print("Initializing ...")
+        self.initCaffe()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,20 +38,23 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         case FoundNil(String)
     }
     
-    
-    func classifier(img: UIImage){
-        do{
-            if let result = caffe.prediction(regarding: img){
-                let sorted = result.map{$0.floatValue}.enumerated().sorted(by: {$0.element > $1.element})[0...10]
-                let finalResult = sorted.map{"\($0.element*100)% chance to be: \(classMapping[$0.offset]!)"}.joined(separator: "\n\n")
-                
-                print("Result is \n\(finalResult)")
-                self.result = finalResult
-            }
+    func initCaffe() {
+        do {
+            self.caffe = try Caffe2(initNetNamed: self.initNetNamed, predictNetNamed: self.predictNetName)
         } catch _ {
-            print(self.foundNilErrorMsg, "classifier function went wrong")
+            print("Caffe init error")
         }
         
+    }
+    
+    func classifier(img: UIImage){
+        if let result = self.caffe?.prediction(regarding: img){
+            let sorted = result.map{$0.floatValue}.enumerated().sorted(by: {$0.element > $1.element})[0...10]
+            let finalResult = sorted.map{"\($0.element*100)% chance to be: \(classMapping[$0.offset]!)"}.joined(separator: "\n\n")
+            
+            print("Result is \n\(finalResult)")
+            self.result = finalResult
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,7 +64,7 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     lazy var cameraSession: AVCaptureSession = {
         let s = AVCaptureSession()
-        s.sessionPreset = AVCaptureSessionPresetLow
+        s.sessionPreset = AVCaptureSessionPresetHigh
         return s
     }()
     
@@ -106,12 +111,7 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, from connection: AVCaptureConnection!) {
         let img = sampleBuffer.image()
-        do {
-            self.classifier(img: img!)
-           
-        } catch _ {
-            print(self.processingErrorMsg)
-        }
+        self.classifier(img: img!)
         // Force UI work to be done in main thread
         DispatchQueue.main.async(execute: {
             self.resultDisplayer.text = self.result
@@ -127,14 +127,14 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
 }
 
 extension CMSampleBuffer {
-    func image(orientation: UIImageOrientation = .up, scale: CGFloat = 1.0) -> UIImage? {
+    func image(orientation: UIImageOrientation = .up, scale: CGFloat = 1.0) -> UIImage! {
         guard let buffer = CMSampleBufferGetImageBuffer(self) else { return nil }
         
         let ciImage = CIImage(cvPixelBuffer: buffer)
         
         let image = UIImage(ciImage: ciImage, scale: scale, orientation: orientation)
         
-        let resizedImg = resizeImage(image: image, widthRatio: CGFloat(2.0), heightRatio: CGFloat(2.0))
+        let resizedImg = resizeImage(image: image, widthRatio: CGFloat(500 / image.size.width), heightRatio: CGFloat(1))
         
         return resizedImg
     }
