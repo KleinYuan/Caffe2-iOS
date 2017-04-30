@@ -12,11 +12,10 @@ import AVFoundation
 
 class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
-    let predictNetName = "predict_net"
-    let initNetNamed = "exec_net"
     let foundNilErrorMsg = "[Error] Thrown \n"
     let processingErrorMsg = "[Error] Processing Error \n"
     var result = ""
+    let caffe = try! Caffe2(initNetNamed: "init_net", predictNetNamed: "predict_net")
     @IBOutlet weak var resultDisplayer: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +39,6 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     func classifier(img: UIImage){
         do{
-            let caffe = try Caffe2(initNetNamed: self.initNetNamed, predictNetNamed: self.predictNetName)
             if let result = caffe.prediction(regarding: img){
                 let sorted = result.map{$0.floatValue}.enumerated().sorted(by: {$0.element > $1.element})[0...10]
                 let finalResult = sorted.map{"\($0.element*100)% chance to be: \(classMapping[$0.offset]!)"}.joined(separator: "\n\n")

@@ -33,12 +33,15 @@ This is a project to demo how to use `Caffe2`/`OpenCV 2` to build an iOS applica
 
 - [X] Open the app and press `Run` to check the result of a pre-loaded image (cute Panda!) and press `live` to go to live mode
 
+# Performance 
+
+*The initial slope is for a staitc 4KB image, around 50 MB*
+
+![memorycomsuption](https://cloud.githubusercontent.com/assets/8921629/25562545/29e545f8-2d3d-11e7-9ab8-f780de05ddeb.png)
 
 # Future Work (meaning that it will be here in a few days)
 
 - [ ] Add an upload image feature for static classifier so that you can test
-
-- [ ] Optimize memory issues for real time classifier, which I believe is an issue
 
 - [ ] Enable you to uplaod your own Caffe2 model to the app and test it
 

@@ -9,11 +9,10 @@
 import UIKit
 
 class staticDetectorVC: UIViewController {
-    
-    let predictNetName = "predict_net"
-    let initNetNamed = "exec_net"
+
     let foundNilErrorMsg = "[Error] Thrown"
     let testImg = "panda.jpeg"
+    let caffe = try! Caffe2(initNetNamed: "init_net", predictNetNamed: "predict_net")
     
     @IBOutlet weak var imageDisplayer: UIImageView!
     @IBOutlet weak var resultDisplayer: UITextView!
@@ -38,7 +37,6 @@ class staticDetectorVC: UIViewController {
     func classifier(name: String){
         self.imageDisplayer.image = UIImage(named: testImg)
         do{
-            let caffe = try Caffe2(initNetNamed: self.initNetNamed, predictNetNamed: self.predictNetName)
             guard let testImage = #imageLiteral(resourceName: name) as? UIImage else {
                 print("Trying to load Image ...")
                 throw CommonError.FoundNil(self.foundNilErrorMsg)
