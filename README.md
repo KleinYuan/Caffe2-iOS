@@ -2,9 +2,9 @@
 
 This is a project to demo how to use `Caffe2`/`OpenCV 2` to build an iOS application doing real time object classification.
 
-![image1](https://cloud.githubusercontent.com/assets/8921629/25560651/28e0d7e0-2d0f-11e7-8d49-9dcf48f91b4e.PNG)
-
-![realtime](https://cloud.githubusercontent.com/assets/8921629/25568328/394f19c4-2db5-11e7-9922-727818f7dcab.PNG)
+**Static Classifier**             |  **Real Time Classifier**
+:-------------------------:|:-------------------------:
+![static](https://cloud.githubusercontent.com/assets/8921629/25568373/16e02918-2db6-11e7-81b3-d04df27bcfe5.PNG)   | ![realtime](https://cloud.githubusercontent.com/assets/8921629/25568372/14d9b2ba-2db6-11e7-9c95-1fe4aeaadad1.PNG) 
 
 ### Dependencies
 
