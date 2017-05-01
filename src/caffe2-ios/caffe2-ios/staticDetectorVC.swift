@@ -12,10 +12,10 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
 
     let foundNilErrorMsg = "[Error] Thrown"
     let testImg = "panda.jpeg"
-    let caffe = try! Caffe2(initNetNamed: "init_net", predictNetNamed: "predict_net")
     let imagePickerController = UIImagePickerController()
     @IBOutlet weak var imageDisplayer: UIImageView!
     @IBOutlet weak var resultDisplayer: UITextView!
+    var pickedImages = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,14 +42,11 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
         self.present(self.imagePickerController, animated: false, completion: nil)
     }
     
-    
-    
     func classifier(image: UIImage){
         self.imageDisplayer.image = image
         let resizedImage = self.resizeImage(image: image, newWidth: CGFloat(500))
         do{
-            if let result = self.caffe.prediction(regarding: resizedImage!){
-
+            if let result = caffe.prediction(regarding: resizedImage!){
                 let sorted = result.map{$0.floatValue}.enumerated().sorted(by: {$0.element > $1.element})[0...10]
                 let finalResult = sorted.map{"\($0.element*100)% chance to be: \(classMapping[$0.offset]!)"}.joined(separator: "\n\n")
                 
@@ -69,13 +66,14 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
     
     // MARK: Image Picker Controller Delegate Functions
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        var pickedImage : UIImage
+        // Remove previous images to save memory, or it might explode
+        self.pickedImages.removeAll()
         if let possibleImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-            pickedImage = possibleImage
+            self.pickedImages.append(possibleImage)
         } else {
             return
         }
-        self.classifier(image: pickedImage)
+        self.classifier(image: self.pickedImages[0])
         dismiss(animated: true, completion: nil)
     }
     // MARK: Help functions

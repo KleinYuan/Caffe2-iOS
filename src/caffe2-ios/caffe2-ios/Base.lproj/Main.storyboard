@@ -55,28 +55,28 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bS4-iI-vi6">
-                                <rect key="frame" x="155" y="627" width="65" height="30"/>
+                                <rect key="frame" x="115.5" y="627" width="144" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="cTa-nh-Psn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Upload">
+                                <state key="normal" title="Upload and Run">
                                     <color key="titleColor" red="1" green="0.34958147319999999" blue="0.36042178200000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="pickPhotoFromLibrary:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U7t-zE-7zq"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XgC-tL-fks">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgC-tL-fks">
                                 <rect key="frame" x="6" y="459" width="363" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="fp1-o8-J3h"/>
                                 </constraints>
-                                <string key="text">Press Demo to load demo image
-Press Upload to load image from Photo Library
-Preee Live to use camera for real time classification</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <string key="text">*Press Demo to load demo image
+*Press Upload and Run to load image from Photo Library
+*Preee Live to use camera for real time run</string>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -142,7 +142,7 @@ Preee Live to use camera for real time classification</string>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DWG-R1-TR6">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DWG-R1-TR6">
                                 <rect key="frame" x="0.0" y="71" width="375" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="0.17173149269999999" green="1" blue="0.14327887710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
