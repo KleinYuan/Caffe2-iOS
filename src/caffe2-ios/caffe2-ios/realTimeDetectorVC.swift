@@ -15,8 +15,15 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     let foundNilErrorMsg = "[Error] Thrown \n"
     let processingErrorMsg = "[Error] Processing Error \n"
     var result = ""
-    let caffe = try! Caffe2(initNetNamed: "init_net", predictNetNamed: "predict_net")
+    var memUsage = 0 as Float
+    
     @IBOutlet weak var resultDisplayer: UITextView!
+    @IBOutlet weak var memUsageDisplayer: UITextView!
+    
+    enum CommonError: Error{
+        case FoundNil(String)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupCameraSession()
@@ -28,27 +35,58 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         
         view.layer.addSublayer(previewLayer)
         self.view.addSubview(self.resultDisplayer)
+        self.view.addSubview(self.memUsageDisplayer)
         self.view.bringSubview(toFront: self.resultDisplayer)
+        self.view.bringSubview(toFront: self.memUsageDisplayer)
         cameraSession.startRunning()
-    }
-    
-    enum CommonError: Error{
-        case FoundNil(String)
-    }
-    
-    func classifier(img: UIImage){
-        if let result = self.caffe.prediction(regarding: img){
-            let sorted = result.map{$0.floatValue}.enumerated().sorted(by: {$0.element > $1.element})[0...10]
-            let finalResult = sorted.map{"\($0.element*100)% chance to be: \(classMapping[$0.offset]!)"}.joined(separator: "\n\n")
-            
-            print("Result is \n\(finalResult)")
-            self.result = finalResult
-        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        cameraSession.stopRunning()
+    }
+    
+    func getMemory()
+    {
+        var info = mach_task_basic_info()
+        var count = mach_msg_type_number_t(MemoryLayout.size(ofValue: info))/4
+        
+        let kerr: kern_return_t = withUnsafeMutablePointer(to: &info)
+        {
+            
+            task_info(mach_task_self_,
+                      task_flavor_t(MACH_TASK_BASIC_INFO),
+                      $0.withMemoryRebound(to: Int32.self, capacity: 1) { zeroPtr in
+                        task_info_t(zeroPtr)
+                },
+                      &count)
+            
+        }
+        
+        if kerr == KERN_SUCCESS {
+            print("Memory in use (in bytes): \(info.resident_size)")
+            self.memUsage = Float(info.resident_size)/(1024 * 1024)
+        }
+        else {
+            print("Error with task_info(): " +
+                (String.init(validatingUTF8: mach_error_string(kerr)) ?? "unknown error"))
+        }
+    }
+    
+    func classifier(img: UIImage){
+        if let result = caffe.prediction(regarding: img){
+            let sorted = result.map{$0.floatValue}.enumerated().sorted(by: {$0.element > $1.element})[0...10]
+            let finalResult = sorted.map{"\($0.element*100)% chance to be: \(classMapping[$0.offset]!)"}.joined(separator: "\n\n")
+            
+            print("Result is \n\(finalResult)")
+            self.getMemory()
+            self.result = finalResult
+        }
     }
     
     lazy var cameraSession: AVCaptureSession = {
@@ -64,8 +102,6 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         preview?.videoGravity = AVLayerVideoGravityResize
         return preview!
     }()
-    
-    
     
     func setupCameraSession() {
         let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo) as AVCaptureDevice
@@ -104,6 +140,7 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         // Force UI work to be done in main thread
         DispatchQueue.main.async(execute: {
             self.resultDisplayer.text = self.result
+            self.memUsageDisplayer.text = "Memory usage: \(self.memUsage) MB"
         })
     }
     
