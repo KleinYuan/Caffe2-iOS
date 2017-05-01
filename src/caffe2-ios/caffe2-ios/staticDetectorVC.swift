@@ -39,7 +39,7 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     @IBAction func pickPhotoFromLibrary(_ sender: UIButton) {
-        self.present(self.imagePickerController, animated: false, completion: nil)
+        self.present(self.imagePickerController, animated: true, completion: nil)
     }
     
     func classifier(image: UIImage){
