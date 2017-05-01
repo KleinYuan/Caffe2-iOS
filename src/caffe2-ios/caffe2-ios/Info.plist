@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need to access photo library so you can run caffe on your own image</string>
 	<key>NSCameraUsageDescription</key>
 	<string>We need to access the camera to capture the wrold around you.</string>
 	<key>CFBundleDevelopmentRegion</key>

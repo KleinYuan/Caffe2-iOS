@@ -4,7 +4,7 @@ This is a project to demo how to use `Caffe2`/`OpenCV 2` to build an iOS applica
 
 **Static Classifier**             |  **Real Time Classifier**
 :-------------------------:|:-------------------------:
-![static](https://cloud.githubusercontent.com/assets/8921629/25568373/16e02918-2db6-11e7-81b3-d04df27bcfe5.PNG)   | ![realtime](https://cloud.githubusercontent.com/assets/8921629/25568372/14d9b2ba-2db6-11e7-9c95-1fe4aeaadad1.PNG) 
+![static](https://cloud.githubusercontent.com/assets/8921629/25570968/37b26e02-2ddf-11e7-806f-20c8e2b0d844.PNG)  | ![realtime](https://cloud.githubusercontent.com/assets/8921629/25570965/32d0b43e-2ddf-11e7-816a-925a2adbc579.PNG)
 
 ### Dependencies
 
@@ -37,7 +37,7 @@ This is a project to demo how to use `Caffe2`/`OpenCV 2` to build an iOS applica
 
 # Performance 
 
-*The initial slope is for a static 4KB image, around 50 MB and Note that memory usage in live mode might not be the same as the one shown in Xcode (slightly different)*
+*The initial slope is for a static 4KB image, around 50 MB and Note that memory usage in live mode might not be the same as the one shown in Xcode (slightly different). And also, remember the memory data in the app is aggregated and therefore, if you are really interested in checking performance of a specific process, open Xcode :)*
 
 ### For low res version
 ![memorycomsuption](https://cloud.githubusercontent.com/assets/8921629/25562545/29e545f8-2d3d-11e7-9ab8-f780de05ddeb.png)
