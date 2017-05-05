@@ -8,8 +8,11 @@
 
 import UIKit
 
-class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    @IBOutlet weak var modelPickerView: UIPickerView!
+    let modelPickerData = ["squeezeNet", "googLeNet", "tinyYolo"]
+    var modelPicked = "squeezeNet"
     let foundNilErrorMsg = "[Error] Thrown"
     let testImg = "panda.jpeg"
     let imagePickerController = UIImagePickerController()
@@ -22,6 +25,8 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
         print("Initializing ...")
         self.imagePickerController.delegate = self
         self.imagePickerController.allowsEditing = false
+        self.modelPickerView.delegate = self
+        self.modelPickerView.dataSource = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,13 +47,17 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
         self.present(self.imagePickerController, animated: true, completion: nil)
     }
     
+    @IBAction func reloadModel(_ sender: UIButton) {
+        caffe = try! Caffe2(initNetNamed: "\(self.modelPicked)Init", predictNetNamed: "\(self.modelPicked)Predict")
+        print("Switched the model to \(self.modelPicked)!")
+    }
     func classifier(image: UIImage){
         self.imageDisplayer.image = image
         let resizedImage = self.resizeImage(image: image, newWidth: CGFloat(500))
         do{
             if let result = caffe.prediction(regarding: resizedImage!){
                 let sorted = result.map{$0.floatValue}.enumerated().sorted(by: {$0.element > $1.element})[0...10]
-                let finalResult = sorted.map{"\($0.element*100)% chance to be: \(classMapping[$0.offset]!)"}.joined(separator: "\n\n")
+                let finalResult = sorted.map{"\($0.element*100)% chance to be: \(squeezenetClassMapping[$0.offset]!)"}.joined(separator: "\n\n")
                 
                 print("Result is \n\(finalResult)")
                 self.resultDisplayer.text = finalResult
@@ -88,6 +97,29 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
         UIGraphicsEndImageContext()
         
         return newImage
+    }
+    // MARK: PickerView Delegate
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.modelPickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return self.modelPickerData[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let attributedString = NSAttributedString(string: self.modelPickerData[row], attributes: [NSForegroundColorAttributeName : UIColor.green])
+        
+        return attributedString
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.modelPicked = self.modelPickerData[row]
+        print("\(self.modelPickerData[row]) is chosen")
     }
 }
 

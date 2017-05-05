@@ -8,8 +8,8 @@
 
 // You can find full mapping in here : https://gist.github.com/maraoz/388eddec39d60c6d52d4
 
-let caffe = try! Caffe2(initNetNamed: "init_net", predictNetNamed: "predict_net")
-let classMapping =
+var caffe = try! Caffe2(initNetNamed: "squeezeNetInit", predictNetNamed: "squeezeNetPredict")
+let squeezenetClassMapping =
 [
  0: "tench, Tinca tinca",
  1: "goldfish, Carassius auratus",
