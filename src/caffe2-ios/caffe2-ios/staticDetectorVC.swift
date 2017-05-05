@@ -48,7 +48,9 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     @IBAction func reloadModel(_ sender: UIButton) {
-        caffe = try! Caffe2(initNetNamed: "\(self.modelPicked)Init", predictNetNamed: "\(self.modelPicked)Predict")
+
+//        caffe = try! Caffe2(initNetNamed: "\(self.modelPicked)Init", predictNetNamed: "\(self.modelPicked)Predict")
+        try! caffe.reloadModel(initNetNamed: "\(self.modelPicked)Init", predictNetNamed: "\(self.modelPicked)Predict")
         print("Switched the model to \(self.modelPicked)!")
     }
     func classifier(image: UIImage){
