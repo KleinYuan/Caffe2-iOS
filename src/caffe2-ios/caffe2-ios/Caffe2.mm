@@ -121,8 +121,9 @@ CGContextRef CreateRGBABitmapContext (CGImageRef inImage)
 
 -(void) reloadModel:(nonnull NSString*)initNetFilename predict:(nonnull NSString*)predictNetFilename error:(NSError **)error {
 
+    
     if(self){
-        _predictor = nil;
+        delete _predictor;
         NSString* initNetPath = [self pathToResourceNamed:initNetFilename error:error];
         NSString* predictNetPath = [self pathToResourceNamed:predictNetFilename error:error];
         

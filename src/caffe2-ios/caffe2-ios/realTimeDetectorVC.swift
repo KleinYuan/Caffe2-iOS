@@ -166,12 +166,12 @@ extension CMSampleBuffer {
         
         let image = UIImage(ciImage: ciImage, scale: scale, orientation: orientation)
         
-        let resizedImg = resizeImage(image: image, widthRatio: CGFloat(500 / image.size.width), heightRatio: CGFloat(1))
+        let resizedImg = resizeBufferImage(image: image, widthRatio: CGFloat(500 / image.size.width), heightRatio: CGFloat(1))
         
         return resizedImg
     }
     
-    func resizeImage(image: UIImage, widthRatio: CGFloat, heightRatio: CGFloat) -> UIImage {
+    func resizeBufferImage(image: UIImage, widthRatio: CGFloat, heightRatio: CGFloat) -> UIImage {
         let size = image.size
         
         // Figure out what our orientation is, and use that to form the rectangle

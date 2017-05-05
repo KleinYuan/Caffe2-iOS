@@ -48,14 +48,12 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     @IBAction func reloadModel(_ sender: UIButton) {
-
-//        caffe = try! Caffe2(initNetNamed: "\(self.modelPicked)Init", predictNetNamed: "\(self.modelPicked)Predict")
         try! caffe.reloadModel(initNetNamed: "\(self.modelPicked)Init", predictNetNamed: "\(self.modelPicked)Predict")
         print("Switched the model to \(self.modelPicked)!")
     }
     func classifier(image: UIImage){
         self.imageDisplayer.image = image
-        let resizedImage = self.resizeImage(image: image, newWidth: CGFloat(500))
+        let resizedImage = resizeImage(image: image, newWidth: CGFloat(500))
         do{
             if let result = caffe.prediction(regarding: resizedImage!){
                 let sorted = result.map{$0.floatValue}.enumerated().sorted(by: {$0.element > $1.element})[0...10]
@@ -87,19 +85,7 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
         self.classifier(image: self.pickedImages[0])
         dismiss(animated: true, completion: nil)
     }
-    // MARK: Help functions
-    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
-        
-        let scale = newWidth / image.size.width
-        let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-        
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage
-    }
+
     // MARK: PickerView Delegate
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C57027D1EBC47A9002F6227 /* googLeNetInit.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C57027B1EBC47A9002F6227 /* googLeNetInit.pb */; };
+		7C57027E1EBC47A9002F6227 /* googLeNetPredict.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C57027C1EBC47A9002F6227 /* googLeNetPredict.pb */; };
+		7C5702811EBC47C4002F6227 /* tinyYoloInit.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C57027F1EBC47C4002F6227 /* tinyYoloInit.pb */; };
+		7C5702821EBC47C4002F6227 /* tinyYoloPredict.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C5702801EBC47C4002F6227 /* tinyYoloPredict.pb */; };
 		7C8E442C1EB329FC00BA6D76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E442B1EB329FC00BA6D76 /* AppDelegate.swift */; };
 		7C8E442E1EB329FC00BA6D76 /* staticDetectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E442D1EB329FC00BA6D76 /* staticDetectorVC.swift */; };
 		7C8E44311EB329FC00BA6D76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E442F1EB329FC00BA6D76 /* Main.storyboard */; };
@@ -23,6 +27,9 @@
 		7C9DDAA51EB55C7E0037EC52 /* panda.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7C9DDAA41EB55C7E0037EC52 /* panda.jpeg */; };
 		7C9DDAA71EB5627D0037EC52 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9DDAA61EB5627D0037EC52 /* AVFoundation.framework */; };
 		7C9DDAA91EB564760037EC52 /* realTimeDetectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9DDAA81EB564760037EC52 /* realTimeDetectorVC.swift */; };
+		7CD2EB071EBC54C700681030 /* advancedTesterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD2EB061EBC54C700681030 /* advancedTesterVC.swift */; };
+		7CD2EB091EBC569700681030 /* helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD2EB081EBC569700681030 /* helpers.swift */; };
+		7CD2EB0C1EBC5F5D00681030 /* downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD2EB0B1EBC5F5D00681030 /* downloader.swift */; };
 		7CE9854E1EB41DB700CA112F /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE9854D1EB41DB700CA112F /* libstdc++.tbd */; };
 		7CE985531EB41F8C00CA112F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE985521EB41F8C00CA112F /* Accelerate.framework */; };
 		7CE985551EB41F9400CA112F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE985541EB41F9400CA112F /* Foundation.framework */; };
@@ -34,6 +41,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C57027B1EBC47A9002F6227 /* googLeNetInit.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = googLeNetInit.pb; sourceTree = "<group>"; };
+		7C57027C1EBC47A9002F6227 /* googLeNetPredict.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = googLeNetPredict.pb; sourceTree = "<group>"; };
+		7C57027F1EBC47C4002F6227 /* tinyYoloInit.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = tinyYoloInit.pb; sourceTree = "<group>"; };
+		7C5702801EBC47C4002F6227 /* tinyYoloPredict.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = tinyYoloPredict.pb; sourceTree = "<group>"; };
 		7C8E44281EB329FC00BA6D76 /* caffe2-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "caffe2-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C8E442B1EB329FC00BA6D76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C8E442D1EB329FC00BA6D76 /* staticDetectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = staticDetectorVC.swift; sourceTree = "<group>"; };
@@ -55,6 +66,9 @@
 		7C9DDAA41EB55C7E0037EC52 /* panda.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = panda.jpeg; sourceTree = "<group>"; };
 		7C9DDAA61EB5627D0037EC52 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7C9DDAA81EB564760037EC52 /* realTimeDetectorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = realTimeDetectorVC.swift; sourceTree = "<group>"; };
+		7CD2EB061EBC54C700681030 /* advancedTesterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = advancedTesterVC.swift; sourceTree = "<group>"; };
+		7CD2EB081EBC569700681030 /* helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = helpers.swift; sourceTree = "<group>"; };
+		7CD2EB0B1EBC5F5D00681030 /* downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = downloader.swift; sourceTree = "<group>"; };
 		7CE9854D1EB41DB700CA112F /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		7CE985521EB41F8C00CA112F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		7CE985541EB41F9400CA112F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -108,6 +122,7 @@
 		7C8E442A1EB329FC00BA6D76 /* caffe2-ios */ = {
 			isa = PBXGroup;
 			children = (
+				7CD2EB0A1EBC569C00681030 /* util */,
 				7CF78F561EB569ED009DB460 /* config */,
 				7C9DDAAA1EB564DC0037EC52 /* viewControllers */,
 				7CE985611EB42C0C00CA112F /* wrappers */,
@@ -129,8 +144,18 @@
 			children = (
 				7C9DDAA81EB564760037EC52 /* realTimeDetectorVC.swift */,
 				7C8E442D1EB329FC00BA6D76 /* staticDetectorVC.swift */,
+				7CD2EB061EBC54C700681030 /* advancedTesterVC.swift */,
 			);
 			name = viewControllers;
+			sourceTree = "<group>";
+		};
+		7CD2EB0A1EBC569C00681030 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				7CD2EB081EBC569700681030 /* helpers.swift */,
+				7CD2EB0B1EBC5F5D00681030 /* downloader.swift */,
+			);
+			name = util;
 			sourceTree = "<group>";
 		};
 		7CE9854C1EB41DB700CA112F /* Frameworks */ = {
@@ -168,6 +193,10 @@
 		7CE985511EB41E2600CA112F /* models */ = {
 			isa = PBXGroup;
 			children = (
+				7C57027F1EBC47C4002F6227 /* tinyYoloInit.pb */,
+				7C5702801EBC47C4002F6227 /* tinyYoloPredict.pb */,
+				7C57027B1EBC47A9002F6227 /* googLeNetInit.pb */,
+				7C57027C1EBC47A9002F6227 /* googLeNetPredict.pb */,
 				7C8E44471EB32A7D00BA6D76 /* squeezeNetPredict.pb */,
 				7C8E44451EB32A7900BA6D76 /* squeezeNetInit.pb */,
 			);
@@ -266,11 +295,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C5702811EBC47C4002F6227 /* tinyYoloInit.pb in Resources */,
+				7C57027D1EBC47A9002F6227 /* googLeNetInit.pb in Resources */,
 				7C8E44361EB329FC00BA6D76 /* LaunchScreen.storyboard in Resources */,
 				7C8E44331EB329FC00BA6D76 /* Assets.xcassets in Resources */,
+				7C5702821EBC47C4002F6227 /* tinyYoloPredict.pb in Resources */,
 				7C8E44461EB32A7900BA6D76 /* squeezeNetInit.pb in Resources */,
 				7C8E44311EB329FC00BA6D76 /* Main.storyboard in Resources */,
 				7CE985591EB422FA00CA112F /* pugs.jpg in Resources */,
+				7C57027E1EBC47A9002F6227 /* googLeNetPredict.pb in Resources */,
 				7C9DDAA51EB55C7E0037EC52 /* panda.jpeg in Resources */,
 				7C8E44481EB32A7D00BA6D76 /* squeezeNetPredict.pb in Resources */,
 			);
@@ -283,6 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CD2EB0C1EBC5F5D00681030 /* downloader.swift in Sources */,
 				7C8E442E1EB329FC00BA6D76 /* staticDetectorVC.swift in Sources */,
 				7CE985601EB4290D00CA112F /* UIImage+OpenCV.mm in Sources */,
 				7C9DDAA91EB564760037EC52 /* realTimeDetectorVC.swift in Sources */,
@@ -290,6 +324,8 @@
 				7CF78F581EB56A00009DB460 /* config.swift in Sources */,
 				7CE9855C1EB4280500CA112F /* OpenCVWrapper.mm in Sources */,
 				7C8E444D1EB32B2D00BA6D76 /* Caffe2.mm in Sources */,
+				7CD2EB071EBC54C700681030 /* advancedTesterVC.swift in Sources */,
+				7CD2EB091EBC569700681030 /* helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
