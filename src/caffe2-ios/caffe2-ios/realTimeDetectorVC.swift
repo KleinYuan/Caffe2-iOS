@@ -163,7 +163,7 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         // Force UI work to be done in main thread
         DispatchQueue.main.async(execute: {
             self.resultDisplayer.text = self.result
-            self.memUsageDisplayer.text = "Memory usage: \(self.memUsage) MB \nTime elasped: \(self.elaspe)"
+            self.memUsageDisplayer.text = "Memory usage: \(self.memUsage) MB \nTime elasped: \(self.elaspe) \nModel: \(modelPicked)"
         })
     }
     
