@@ -9,8 +9,8 @@
 // You can find full mapping in here : https://gist.github.com/maraoz/388eddec39d60c6d52d4
 
 var caffe = try! Caffe2(initNetNamed: "squeezeNetInit", predictNetNamed: "squeezeNetPredict")
-//let modelPickerData = ["squeezeNet", "googLeNet", "tinyYolo", "tiny"]
-let modelPickerData = ["squeezeNet", "tiny"]
+let modelPickerData = ["squeezeNet", "googLeNet", "tinyYolo", "tinyDarknet", "bvlcReferenceRcnnIlsvrc"]
+//let modelPickerData = ["squeezeNet", "tinyDarknet", "bvlcReferenceRcnnIlsvrc"]
 var modelPicked = "squeezeNet"
 let squeezenetClassMapping =
 [

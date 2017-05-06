@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C0498011EBDB95E000AABD0 /* tinyInit.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C0497FF1EBDB95E000AABD0 /* tinyInit.pb */; };
-		7C0498021EBDB95E000AABD0 /* tinyPredict.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C0498001EBDB95E000AABD0 /* tinyPredict.pb */; };
+		7C03C1991EBE3D7D00BCA7E6 /* bvlcReferenceRcnnIlsvrcInit.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C03C1971EBE3D7D00BCA7E6 /* bvlcReferenceRcnnIlsvrcInit.pb */; };
+		7C03C19A1EBE3D7D00BCA7E6 /* bvlcReferenceRcnnIlsvrcPredict.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C03C1981EBE3D7D00BCA7E6 /* bvlcReferenceRcnnIlsvrcPredict.pb */; };
+		7C03C1A71EBE4E9900BCA7E6 /* libCAFFE2_NNPACK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03C1A51EBE4E9900BCA7E6 /* libCAFFE2_NNPACK.a */; };
+		7C03C1A81EBE4E9900BCA7E6 /* libCAFFE2_PTHREADPOOL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03C1A61EBE4E9900BCA7E6 /* libCAFFE2_PTHREADPOOL.a */; };
+		7C03C1AB1EBE4EAB00BCA7E6 /* libprotobuf-lite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03C1A91EBE4EAB00BCA7E6 /* libprotobuf-lite.a */; };
+		7C03C1AC1EBE4EAB00BCA7E6 /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03C1AA1EBE4EAB00BCA7E6 /* libprotobuf.a */; };
+		7C03C1B01EBE844A00BCA7E6 /* libCaffe2_CPU.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03C1AF1EBE844A00BCA7E6 /* libCaffe2_CPU.a */; };
+		7C0498011EBDB95E000AABD0 /* tinyDarknetInit.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C0497FF1EBDB95E000AABD0 /* tinyDarknetInit.pb */; };
+		7C0498021EBDB95E000AABD0 /* tinyDarknetPredict.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C0498001EBDB95E000AABD0 /* tinyDarknetPredict.pb */; };
 		7C57027D1EBC47A9002F6227 /* googLeNetInit.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C57027B1EBC47A9002F6227 /* googLeNetInit.pb */; };
 		7C57027E1EBC47A9002F6227 /* googLeNetPredict.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C57027C1EBC47A9002F6227 /* googLeNetPredict.pb */; };
 		7C5702811EBC47C4002F6227 /* tinyYoloInit.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C57027F1EBC47C4002F6227 /* tinyYoloInit.pb */; };
@@ -18,10 +25,6 @@
 		7C8E44311EB329FC00BA6D76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E442F1EB329FC00BA6D76 /* Main.storyboard */; };
 		7C8E44331EB329FC00BA6D76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E44321EB329FC00BA6D76 /* Assets.xcassets */; };
 		7C8E44361EB329FC00BA6D76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E44341EB329FC00BA6D76 /* LaunchScreen.storyboard */; };
-		7C8E44411EB32A7000BA6D76 /* libCaffe2_CPU.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8E443D1EB32A7000BA6D76 /* libCaffe2_CPU.a */; };
-		7C8E44421EB32A7000BA6D76 /* libCAFFE2_NNPACK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8E443E1EB32A7000BA6D76 /* libCAFFE2_NNPACK.a */; };
-		7C8E44431EB32A7000BA6D76 /* libCAFFE2_PTHREADPOOL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8E443F1EB32A7000BA6D76 /* libCAFFE2_PTHREADPOOL.a */; };
-		7C8E44441EB32A7000BA6D76 /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8E44401EB32A7000BA6D76 /* libprotobuf.a */; };
 		7C8E44461EB32A7900BA6D76 /* squeezeNetInit.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E44451EB32A7900BA6D76 /* squeezeNetInit.pb */; };
 		7C8E44481EB32A7D00BA6D76 /* squeezeNetPredict.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E44471EB32A7D00BA6D76 /* squeezeNetPredict.pb */; };
 		7C8E444D1EB32B2D00BA6D76 /* Caffe2.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E444C1EB32B2D00BA6D76 /* Caffe2.mm */; };
@@ -43,8 +46,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7C0497FF1EBDB95E000AABD0 /* tinyInit.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = tinyInit.pb; sourceTree = "<group>"; };
-		7C0498001EBDB95E000AABD0 /* tinyPredict.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = tinyPredict.pb; sourceTree = "<group>"; };
+		7C03C1971EBE3D7D00BCA7E6 /* bvlcReferenceRcnnIlsvrcInit.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = bvlcReferenceRcnnIlsvrcInit.pb; sourceTree = "<group>"; };
+		7C03C1981EBE3D7D00BCA7E6 /* bvlcReferenceRcnnIlsvrcPredict.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = bvlcReferenceRcnnIlsvrcPredict.pb; sourceTree = "<group>"; };
+		7C03C1A51EBE4E9900BCA7E6 /* libCAFFE2_NNPACK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCAFFE2_NNPACK.a; sourceTree = "<group>"; };
+		7C03C1A61EBE4E9900BCA7E6 /* libCAFFE2_PTHREADPOOL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCAFFE2_PTHREADPOOL.a; sourceTree = "<group>"; };
+		7C03C1A91EBE4EAB00BCA7E6 /* libprotobuf-lite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libprotobuf-lite.a"; sourceTree = "<group>"; };
+		7C03C1AA1EBE4EAB00BCA7E6 /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libprotobuf.a; sourceTree = "<group>"; };
+		7C03C1AF1EBE844A00BCA7E6 /* libCaffe2_CPU.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCaffe2_CPU.a; sourceTree = "<group>"; };
+		7C0497FF1EBDB95E000AABD0 /* tinyDarknetInit.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = tinyDarknetInit.pb; sourceTree = "<group>"; };
+		7C0498001EBDB95E000AABD0 /* tinyDarknetPredict.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = tinyDarknetPredict.pb; sourceTree = "<group>"; };
 		7C57027B1EBC47A9002F6227 /* googLeNetInit.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = googLeNetInit.pb; sourceTree = "<group>"; };
 		7C57027C1EBC47A9002F6227 /* googLeNetPredict.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = googLeNetPredict.pb; sourceTree = "<group>"; };
 		7C57027F1EBC47C4002F6227 /* tinyYoloInit.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = tinyYoloInit.pb; sourceTree = "<group>"; };
@@ -56,10 +66,6 @@
 		7C8E44321EB329FC00BA6D76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C8E44351EB329FC00BA6D76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C8E44371EB329FC00BA6D76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7C8E443D1EB32A7000BA6D76 /* libCaffe2_CPU.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCaffe2_CPU.a; sourceTree = "<group>"; };
-		7C8E443E1EB32A7000BA6D76 /* libCAFFE2_NNPACK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCAFFE2_NNPACK.a; sourceTree = "<group>"; };
-		7C8E443F1EB32A7000BA6D76 /* libCAFFE2_PTHREADPOOL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCAFFE2_PTHREADPOOL.a; sourceTree = "<group>"; };
-		7C8E44401EB32A7000BA6D76 /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libprotobuf.a; sourceTree = "<group>"; };
 		7C8E44451EB32A7900BA6D76 /* squeezeNetInit.pb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; path = squeezeNetInit.pb; sourceTree = "<group>"; };
 		7C8E44471EB32A7D00BA6D76 /* squeezeNetPredict.pb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; path = squeezeNetPredict.pb; sourceTree = "<group>"; };
 		7C8E44491EB32A8300BA6D76 /* Prefix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.h; sourceTree = "<group>"; };
@@ -94,12 +100,13 @@
 				7CE985571EB41F9B00CA112F /* UIKit.framework in Frameworks */,
 				7CE985551EB41F9400CA112F /* Foundation.framework in Frameworks */,
 				7CE985531EB41F8C00CA112F /* Accelerate.framework in Frameworks */,
+				7C03C1AC1EBE4EAB00BCA7E6 /* libprotobuf.a in Frameworks */,
+				7C03C1B01EBE844A00BCA7E6 /* libCaffe2_CPU.a in Frameworks */,
 				7CE9854E1EB41DB700CA112F /* libstdc++.tbd in Frameworks */,
-				7C8E44441EB32A7000BA6D76 /* libprotobuf.a in Frameworks */,
-				7C8E44411EB32A7000BA6D76 /* libCaffe2_CPU.a in Frameworks */,
-				7C8E44421EB32A7000BA6D76 /* libCAFFE2_NNPACK.a in Frameworks */,
 				7C8E44521EB32EAF00BA6D76 /* opencv2.framework in Frameworks */,
-				7C8E44431EB32A7000BA6D76 /* libCAFFE2_PTHREADPOOL.a in Frameworks */,
+				7C03C1A81EBE4E9900BCA7E6 /* libCAFFE2_PTHREADPOOL.a in Frameworks */,
+				7C03C1A71EBE4E9900BCA7E6 /* libCAFFE2_NNPACK.a in Frameworks */,
+				7C03C1AB1EBE4EAB00BCA7E6 /* libprotobuf-lite.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,10 +184,11 @@
 		7CE9854F1EB41DFA00CA112F /* caffe2 */ = {
 			isa = PBXGroup;
 			children = (
-				7C8E443D1EB32A7000BA6D76 /* libCaffe2_CPU.a */,
-				7C8E443E1EB32A7000BA6D76 /* libCAFFE2_NNPACK.a */,
-				7C8E443F1EB32A7000BA6D76 /* libCAFFE2_PTHREADPOOL.a */,
-				7C8E44401EB32A7000BA6D76 /* libprotobuf.a */,
+				7C03C1AF1EBE844A00BCA7E6 /* libCaffe2_CPU.a */,
+				7C03C1A91EBE4EAB00BCA7E6 /* libprotobuf-lite.a */,
+				7C03C1AA1EBE4EAB00BCA7E6 /* libprotobuf.a */,
+				7C03C1A51EBE4E9900BCA7E6 /* libCAFFE2_NNPACK.a */,
+				7C03C1A61EBE4E9900BCA7E6 /* libCAFFE2_PTHREADPOOL.a */,
 			);
 			name = caffe2;
 			sourceTree = "<group>";
@@ -197,8 +205,10 @@
 		7CE985511EB41E2600CA112F /* models */ = {
 			isa = PBXGroup;
 			children = (
-				7C0497FF1EBDB95E000AABD0 /* tinyInit.pb */,
-				7C0498001EBDB95E000AABD0 /* tinyPredict.pb */,
+				7C03C1971EBE3D7D00BCA7E6 /* bvlcReferenceRcnnIlsvrcInit.pb */,
+				7C03C1981EBE3D7D00BCA7E6 /* bvlcReferenceRcnnIlsvrcPredict.pb */,
+				7C0497FF1EBDB95E000AABD0 /* tinyDarknetInit.pb */,
+				7C0498001EBDB95E000AABD0 /* tinyDarknetPredict.pb */,
 				7C57027F1EBC47C4002F6227 /* tinyYoloInit.pb */,
 				7C5702801EBC47C4002F6227 /* tinyYoloPredict.pb */,
 				7C57027B1EBC47A9002F6227 /* googLeNetInit.pb */,
@@ -303,17 +313,19 @@
 			files = (
 				7C5702811EBC47C4002F6227 /* tinyYoloInit.pb in Resources */,
 				7C57027D1EBC47A9002F6227 /* googLeNetInit.pb in Resources */,
+				7C03C19A1EBE3D7D00BCA7E6 /* bvlcReferenceRcnnIlsvrcPredict.pb in Resources */,
+				7C03C1991EBE3D7D00BCA7E6 /* bvlcReferenceRcnnIlsvrcInit.pb in Resources */,
 				7C8E44361EB329FC00BA6D76 /* LaunchScreen.storyboard in Resources */,
 				7C8E44331EB329FC00BA6D76 /* Assets.xcassets in Resources */,
 				7C5702821EBC47C4002F6227 /* tinyYoloPredict.pb in Resources */,
-				7C0498021EBDB95E000AABD0 /* tinyPredict.pb in Resources */,
+				7C0498021EBDB95E000AABD0 /* tinyDarknetPredict.pb in Resources */,
 				7C8E44461EB32A7900BA6D76 /* squeezeNetInit.pb in Resources */,
 				7C8E44311EB329FC00BA6D76 /* Main.storyboard in Resources */,
 				7CE985591EB422FA00CA112F /* pugs.jpg in Resources */,
 				7C57027E1EBC47A9002F6227 /* googLeNetPredict.pb in Resources */,
 				7C9DDAA51EB55C7E0037EC52 /* panda.jpeg in Resources */,
 				7C8E44481EB32A7D00BA6D76 /* squeezeNetPredict.pb in Resources */,
-				7C0498011EBDB95E000AABD0 /* tinyInit.pb in Resources */,
+				7C0498011EBDB95E000AABD0 /* tinyDarknetInit.pb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
