@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C0498011EBDB95E000AABD0 /* tinyInit.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C0497FF1EBDB95E000AABD0 /* tinyInit.pb */; };
+		7C0498021EBDB95E000AABD0 /* tinyPredict.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C0498001EBDB95E000AABD0 /* tinyPredict.pb */; };
 		7C57027D1EBC47A9002F6227 /* googLeNetInit.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C57027B1EBC47A9002F6227 /* googLeNetInit.pb */; };
 		7C57027E1EBC47A9002F6227 /* googLeNetPredict.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C57027C1EBC47A9002F6227 /* googLeNetPredict.pb */; };
 		7C5702811EBC47C4002F6227 /* tinyYoloInit.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C57027F1EBC47C4002F6227 /* tinyYoloInit.pb */; };
@@ -41,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C0497FF1EBDB95E000AABD0 /* tinyInit.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = tinyInit.pb; sourceTree = "<group>"; };
+		7C0498001EBDB95E000AABD0 /* tinyPredict.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = tinyPredict.pb; sourceTree = "<group>"; };
 		7C57027B1EBC47A9002F6227 /* googLeNetInit.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = googLeNetInit.pb; sourceTree = "<group>"; };
 		7C57027C1EBC47A9002F6227 /* googLeNetPredict.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = googLeNetPredict.pb; sourceTree = "<group>"; };
 		7C57027F1EBC47C4002F6227 /* tinyYoloInit.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = tinyYoloInit.pb; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 		7CE985511EB41E2600CA112F /* models */ = {
 			isa = PBXGroup;
 			children = (
+				7C0497FF1EBDB95E000AABD0 /* tinyInit.pb */,
+				7C0498001EBDB95E000AABD0 /* tinyPredict.pb */,
 				7C57027F1EBC47C4002F6227 /* tinyYoloInit.pb */,
 				7C5702801EBC47C4002F6227 /* tinyYoloPredict.pb */,
 				7C57027B1EBC47A9002F6227 /* googLeNetInit.pb */,
@@ -300,12 +306,14 @@
 				7C8E44361EB329FC00BA6D76 /* LaunchScreen.storyboard in Resources */,
 				7C8E44331EB329FC00BA6D76 /* Assets.xcassets in Resources */,
 				7C5702821EBC47C4002F6227 /* tinyYoloPredict.pb in Resources */,
+				7C0498021EBDB95E000AABD0 /* tinyPredict.pb in Resources */,
 				7C8E44461EB32A7900BA6D76 /* squeezeNetInit.pb in Resources */,
 				7C8E44311EB329FC00BA6D76 /* Main.storyboard in Resources */,
 				7CE985591EB422FA00CA112F /* pugs.jpg in Resources */,
 				7C57027E1EBC47A9002F6227 /* googLeNetPredict.pb in Resources */,
 				7C9DDAA51EB55C7E0037EC52 /* panda.jpeg in Resources */,
 				7C8E44481EB32A7D00BA6D76 /* squeezeNetPredict.pb in Resources */,
+				7C0498011EBDB95E000AABD0 /* tinyInit.pb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

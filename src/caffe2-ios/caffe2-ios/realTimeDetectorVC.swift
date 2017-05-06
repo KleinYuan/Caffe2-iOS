@@ -16,6 +16,7 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     let processingErrorMsg = "[Error] Processing Error \n"
     var result = ""
     var memUsage = 0 as Float
+    var elaspe = ""
     
     @IBOutlet weak var resultDisplayer: UITextView!
     @IBOutlet weak var memUsageDisplayer: UITextView!
@@ -80,18 +81,34 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     func classifier(img: UIImage){
         let start = DispatchTime.now()
-        if let result = caffe.prediction(regarding: img){
-            let sorted = result.map{$0.floatValue}.enumerated().sorted(by: {$0.element > $1.element})[0...10]
-            let finalResult = sorted.map{"\($0.element*100)% chance to be: \(squeezenetClassMapping[$0.offset]!)"}.joined(separator: "\n\n")
-            
-            print("Result is \n\(finalResult)")
+//        if let result = caffe.prediction(regarding: img){
+//            let sorted = result.map{$0.floatValue}.enumerated().sorted(by: {$0.element > $1.element})[0...10]
+//            let finalResult = sorted.map{"\($0.element*100)% chance to be: \(squeezenetClassMapping[$0.offset]!)"}.joined(separator: "\n\n")
+//            
+//            print("Result is \n\(finalResult)")
+//
+//        }
+        if let predictedResult = caffe.prediction(regarding: img){
+            switch modelPicked {
+            case "squeezeNet":
+                let sorted = predictedResult.map{$0.floatValue}.enumerated().sorted(by: {$0.element > $1.element})[0...10]
+                let finalResult = sorted.map{"\($0.element*100)% chance to be: \(squeezenetClassMapping[$0.offset]!)"}.joined(separator: "\n\n")
+                
+                print("Result is \n\(finalResult)")
+                self.result = finalResult
+            default:
+                print("Result is \n\(predictedResult)")
+                self.result = "\(predictedResult)"
+            }
             self.getMemory()
-            self.result = finalResult
+ 
+            
         }
+        
         let end = DispatchTime.now()
         let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds // <<<<< Difference in nano seconds (UInt64)
         let timeInterval = Double(nanoTime) / 1_000_000_000 // Technically could overflow for long running tests
-        
+        self.elaspe = "\(timeInterval) seconds"
         print("Time elapsed of function (classifier): \(timeInterval) seconds")
     }
     
@@ -146,7 +163,7 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         // Force UI work to be done in main thread
         DispatchQueue.main.async(execute: {
             self.resultDisplayer.text = self.result
-            self.memUsageDisplayer.text = "Memory usage: \(self.memUsage) MB"
+            self.memUsageDisplayer.text = "Memory usage: \(self.memUsage) MB \nTime elasped: \(self.elaspe)"
         })
     }
     
