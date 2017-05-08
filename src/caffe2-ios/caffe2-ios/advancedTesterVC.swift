@@ -12,6 +12,7 @@ class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImage
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var targetImageView: UIImageView!
+    @IBOutlet weak var modelNameTextField: UITextField!
     @IBOutlet weak var resultsTextView: UITextView!
     @IBOutlet weak var initNetUrlTextField: UITextField!
     @IBOutlet weak var predictNetUrlTextField: UITextField!
@@ -19,18 +20,21 @@ class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImage
     var pickedImages = [UIImage]()
     let invalidModelName = "invalid"
     var activeField: UITextField?
+    let demoImage = UIImage(named: "panda.jpeg")
+    var modelName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.imagePickerController.delegate = self
         self.imagePickerController.allowsEditing = false
+        self.targetImageView.image = self.demoImage
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(tapGesture)
+        self.modelNameTextField.delegate = self
         self.initNetUrlTextField.delegate = self
         self.predictNetUrlTextField.delegate = self
         self.registerForKeyboardNotifications()
-        print("Initializing ...")
     }
     
     deinit {
@@ -39,7 +43,7 @@ class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImage
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        self.pickedImages.append(self.demoImage!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -51,7 +55,11 @@ class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImage
     }
     
     @IBAction func downloadModelsFromUrlBtn(_ sender: UIButton) {
-        let modelName = self.downloadModels()
+        self.modelName = self.downloadModels()
+        if self.modelName == self.invalidModelName {
+            self.resultsTextView.text = "Some field is empty."
+            return
+        }
         try! caffe.reloadModel(initNetNamed: "\(modelName)Init", predictNetNamed: "\(modelName)Predict")
         print("Switched the model to \(modelName)!")
     }
@@ -61,6 +69,10 @@ class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImage
     }
     
     @IBAction func runBtn(_ sender: UIButton) {
+        if (self.modelName == "") {
+            self.resultsTextView.text = "Please download model first"
+            return
+        }
         self.classifier(image: self.pickedImages[0])
 
     }
@@ -75,10 +87,10 @@ class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImage
     }
     
     func downloadModels() -> (String) {
-        guard let initText = self.initNetUrlTextField.text, !initText.isEmpty else {
-            return self.invalidModelName
-        }
-        guard let predictText = self.predictNetUrlTextField.text, !predictText.isEmpty else {
+        let initText = self.initNetUrlTextField.text
+        let predictText = self.predictNetUrlTextField.text
+        let name = self.modelNameTextField.text
+        if initText == "" || predictText == "" || name == "" {
             return self.invalidModelName
         }
         // TODO: downloading process should be done here and need to make sure to rename them correctly
@@ -90,7 +102,6 @@ class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImage
     
     // MARK: Image Picker Controller Delegate Functions
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        // Remove previous images to save memory, or it might explode
         self.pickedImages.removeAll()
         if let possibleImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             self.pickedImages.append(possibleImage)
@@ -106,8 +117,6 @@ class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImage
     // MARK: Move keyboard view
     func registerForKeyboardNotifications()
     {
-        //Adding notifies on keyboard appearing
-        print("registering")
         NotificationCenter.default.addObserver(self, selector: #selector(advancedTesterVC.keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(advancedTesterVC.keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
@@ -122,8 +131,6 @@ class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImage
     
     func keyboardWasShown(notification: NSNotification)
     {
-        print("keyboard was shown")
-        //Need to calculate keyboard exact size due to Apple suggestions
         self.scrollView.isScrollEnabled = true
         let info : NSDictionary = notification.userInfo! as NSDictionary
         let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
@@ -145,8 +152,6 @@ class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImage
     
     func keyboardWillBeHidden(notification: NSNotification)
     {
-        //Once keyboard disappears, restore original positions
-        print("keyboard will hide")
         let info : NSDictionary = notification.userInfo! as NSDictionary
         let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
         let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(65.0, 0.0, -keyboardSize!.height - 10, 0.0)

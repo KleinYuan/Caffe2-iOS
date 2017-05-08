@@ -10,7 +10,7 @@ class Downloader {
     class func load(url: URL, to localUrl: URL, completion: @escaping () -> ()) {
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
-        let request = try! URLRequest(url: url)
+        let request = URLRequest(url: url)
         let task = session.downloadTask(with: request) { (tempLocalUrl, response, error) in
             if let tempLocalUrl = tempLocalUrl, error == nil {
                 // Success
@@ -26,7 +26,7 @@ class Downloader {
                 }
                 
             } else {
-                print("Failure: %@", error?.localizedDescription);
+                print("Failure: %@", error?.localizedDescription ?? "unknown error");
             }
         }
         task.resume()

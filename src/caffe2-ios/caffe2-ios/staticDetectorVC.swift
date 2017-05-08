@@ -12,7 +12,7 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
 
     @IBOutlet weak var modelPickerView: UIPickerView!
     let foundNilErrorMsg = "[Error] Thrown"
-    let testImg = "panda.jpeg"
+    let demoImg = UIImage(named:"panda.jpeg")
     let imagePickerController = UIImagePickerController()
     @IBOutlet weak var imageDisplayer: UIImageView!
     @IBOutlet weak var resultDisplayer: UITextView!
@@ -25,6 +25,7 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
         self.imagePickerController.allowsEditing = false
         self.modelPickerView.delegate = self
         self.modelPickerView.dataSource = self
+        self.imageDisplayer.image = self.demoImg
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,8 +38,7 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     @IBAction func demoButton(_ sender: UIButton) {
-        let demoImage = UIImage(named: testImg)!
-        self.classifier(image: demoImage)
+        self.classifier(image: demoImg!)
     }
     
     @IBAction func pickPhotoFromLibrary(_ sender: UIButton) {
