@@ -126,7 +126,10 @@ CGContextRef CreateRGBABitmapContext (CGImageRef inImage)
         delete _predictor;
         NSString* initNetPath = [self pathToResourceNamed:initNetFilename error:error];
         NSString* predictNetPath = [self pathToResourceNamed:predictNetFilename error:error];
-        
+        if(initNetPath == nil || predictNetPath == nil) {
+            printf("path to model by name is nil\n");
+            return;
+        }
         ReadProtoIntoNet(initNetPath.UTF8String, &_initNet);
         ReadProtoIntoNet(predictNetPath.UTF8String, &_predictNet);
         

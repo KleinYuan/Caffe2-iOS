@@ -8,7 +8,7 @@
 
 import UIKit
 
-class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
+class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, URLSessionDownloadDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var targetImageView: UIImageView!
@@ -18,10 +18,11 @@ class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImage
     @IBOutlet weak var predictNetUrlTextField: UITextField!
     let imagePickerController = UIImagePickerController()
     var pickedImages = [UIImage]()
-    let invalidModelName = "invalid"
     var activeField: UITextField?
     let demoImage = UIImage(named: "panda.jpeg")
     var modelName = ""
+    var downloadingInit = false
+    var downloadingPredict = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,13 +56,20 @@ class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImage
     }
     
     @IBAction func downloadModelsFromUrlBtn(_ sender: UIButton) {
-        self.modelName = self.downloadModels()
-        if self.modelName == self.invalidModelName {
-            self.resultsTextView.text = "Some field is empty."
+        if self.downloadingPredict || self.downloadingInit {
+            self.resultsTextView.text = "Downloading!!!!!!"
             return
         }
-        try! caffe.reloadModel(initNetNamed: "\(modelName)Init", predictNetNamed: "\(modelName)Predict")
-        print("Switched the model to \(modelName)!")
+        let initText = self.initNetUrlTextField.text
+        let predictText = self.predictNetUrlTextField.text
+        let name = self.modelNameTextField.text
+        if initText == "" || predictText == "" || name == "" {
+            print("Must fill in all fields")
+            return
+        }
+        self.modelName = self.modelNameTextField.text!
+        self.downloadModelWith(url: initText!)
+        self.downloadingInit = true
     }
     
     @IBAction func uploadPhotoBtn(_ sender: UIButton) {
@@ -86,18 +94,21 @@ class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImage
         
     }
     
-    func downloadModels() -> (String) {
-        let initText = self.initNetUrlTextField.text
-        let predictText = self.predictNetUrlTextField.text
-        let name = self.modelNameTextField.text
-        if initText == "" || predictText == "" || name == "" {
-            return self.invalidModelName
+    func downloadModelWith(url: String) {
+        let config = URLSessionConfiguration.background(withIdentifier: "Download init \(self.modelName)")
+        if let url = NSURL(string: url) {
+            
+            // create session by instantiating with configuration and delegate
+            let session = URLSession(configuration: config, delegate: self, delegateQueue: OperationQueue.main)
+            
+            let downloadTask = session.downloadTask(with: url as URL)
+            self.resultsTextView.text = "Downloading started....."
+            downloadTask.resume()
+            
         }
-        // TODO: downloading process should be done here and need to make sure to rename them correctly
-        
-        let modelName = "stub"
-        return modelName
-        
+//        let modelName = "stub"
+//        return modelName
+//        
     }
     
     // MARK: Image Picker Controller Delegate Functions
@@ -170,6 +181,64 @@ class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImage
     func textFieldDidEndEditing(_ textField: UITextField)
     {
         activeField = nil
+    }
+    
+    // MARK: download delegate
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        var result = ""
+        if self.downloadingInit {
+            result = "Downloading init model \n"
+        } else if self.downloadingPredict {
+            result = "Downloading predict model \n"
+        }
+        print("did write data")
+        print("\(totalBytesWritten)/\(totalBytesExpectedToWrite)")
+        let perc : Int = Int(Double(totalBytesWritten * 100) / Double(totalBytesExpectedToWrite))
+        result.append(String(perc) + "%" + " of \(totalBytesExpectedToWrite) bytes")
+        self.resultsTextView.text = result
+    }
+    
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        if let documentsDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+        {
+            // next we retrieve the suggested name for the file
+            // now we can create the NSURL (including filename) - a file shouldn't already exist at this location
+            
+            let newLocation = NSURL(fileURLWithPath: documentsDirectoryPath).appendingPathComponent(self.modelName + ".pb")
+            do {
+                try FileManager.default.removeItem(at: newLocation!)
+            } catch {
+                print("error deleting file")
+            }
+            
+            do {
+                // now we attempt to move the file from its temporary download location to the required location
+                try FileManager.default.moveItem(at: location, to: newLocation!)
+                if self.downloadingInit {
+                    self.downloadingInit = false
+                    self.downloadModelWith(url: self.predictNetUrlTextField.text!)
+                    self.downloadingPredict = true
+                } else if self.downloadingPredict {
+                    self.downloadingPredict = false
+                    self.resultsTextView.text = "Model \(self.modelName) downloaded"
+                    do {
+                        try caffe.reloadModel(initNetNamed: "\(modelName)Init", predictNetNamed: "\(modelName)Predict")
+                    } catch {
+                        print("reload model failed")
+                    }
+                }
+            }
+            catch {
+                print("error moving file")
+            }
+        }
+    }
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        if error != nil {
+            self.downloadingInit = false
+            self.downloadingPredict = false
+            self.resultsTextView.text = "Download completed with error" + error!.localizedDescription
+        }
     }
 }
 
