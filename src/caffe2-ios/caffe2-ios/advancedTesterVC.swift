@@ -23,6 +23,8 @@ class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImage
     var modelName = ""
     var downloadingInit = false
     var downloadingPredict = false
+    var initNetFilePath = ""
+    var predictNetFilePath = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -203,8 +205,10 @@ class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImage
         {
             // next we retrieve the suggested name for the file
             // now we can create the NSURL (including filename) - a file shouldn't already exist at this location
-            
-            let newLocation = NSURL(fileURLWithPath: documentsDirectoryPath).appendingPathComponent(self.modelName + ".pb")
+            var newLocation = NSURL(fileURLWithPath: documentsDirectoryPath).appendingPathComponent(self.modelName + "Init.pb")
+            if self.downloadingPredict {
+                newLocation = NSURL(fileURLWithPath: documentsDirectoryPath).appendingPathComponent(self.modelName + "Predict.pb")
+            }
             do {
                 try FileManager.default.removeItem(at: newLocation!)
             } catch {
@@ -216,13 +220,15 @@ class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImage
                 try FileManager.default.moveItem(at: location, to: newLocation!)
                 if self.downloadingInit {
                     self.downloadingInit = false
+                    self.initNetFilePath = newLocation!.path
                     self.downloadModelWith(url: self.predictNetUrlTextField.text!)
                     self.downloadingPredict = true
                 } else if self.downloadingPredict {
                     self.downloadingPredict = false
+                    self.predictNetFilePath = newLocation!.path
                     self.resultsTextView.text = "Model \(self.modelName) downloaded"
                     do {
-                        try caffe.reloadModel(initNetNamed: "\(modelName)Init", predictNetNamed: "\(modelName)Predict")
+                        try caffe.loadDownloadedModel(initNetNamed: self.initNetFilePath, predictNetNamed: self.predictNetFilePath)
                     } catch {
                         print("reload model failed")
                     }

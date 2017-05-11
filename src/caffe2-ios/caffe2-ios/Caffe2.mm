@@ -138,6 +138,17 @@ CGContextRef CreateRGBABitmapContext (CGImageRef inImage)
     }
 }
 
+-(void)loadDownloadedModel:(nonnull NSString*)initNetFilePath predict:(nonnull NSString*)predictNetFilePath error:(NSError **)error {
+    if(self){
+        delete _predictor;
+        ReadProtoIntoNet(initNetFilePath.UTF8String, &_initNet);
+        ReadProtoIntoNet(predictNetFilePath.UTF8String, &_predictNet);
+        
+        _predictNet.set_name("PredictNet");
+        _predictor = new caffe2::Predictor(_initNet, _predictNet);
+    }
+}
+
 -(void)dealloc {
     NSLog(@"deadllocing ...");
     google::protobuf::ShutdownProtobufLibrary();
