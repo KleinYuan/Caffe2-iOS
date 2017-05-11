@@ -16,6 +16,7 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
     @IBOutlet weak var imageDisplayer: UIImageView!
     @IBOutlet weak var resultDisplayer: UITextView!
     var pickedImages = [UIImage]()
+    var elaspe = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,15 +44,19 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     func classifier(image: UIImage){
+        let start = DispatchTime.now()
         self.imageDisplayer.image = image
         let resizedImage = self.resizeImage(image: image, newWidth: CGFloat(500))
         do{
             if let result = caffe.prediction(regarding: resizedImage!){
                 let sorted = result.map{$0.floatValue}.enumerated().sorted(by: {$0.element > $1.element})[0...10]
                 let finalResult = sorted.map{"\($0.element*100)% chance to be: \(classMapping[$0.offset]!)"}.joined(separator: "\n\n")
-                
-                print("Result is \n\(finalResult)")
-                self.resultDisplayer.text = finalResult
+                let end = DispatchTime.now()
+                let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds // <<<<< Difference in nano seconds (UInt64)
+                let timeInterval = Double(nanoTime) / 1_000_000_000 // Technically could overflow for long running tests
+                self.elaspe = "\(timeInterval) seconds"
+                print("Time consumption: \(self.elaspe) \nResult is \n\(finalResult)")
+                self.resultDisplayer.text = "Time consumption: \(self.elaspe) \nResults:\(finalResult)"
             }
         } catch _ {
             print(self.foundNilErrorMsg, "classifier function went wrong")
