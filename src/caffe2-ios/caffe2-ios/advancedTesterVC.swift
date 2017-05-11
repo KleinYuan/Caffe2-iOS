@@ -229,6 +229,14 @@ class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImage
                     self.resultsTextView.text = "Model \(self.modelName) downloaded"
                     do {
                         try caffe.loadDownloadedModel(initNetNamed: self.initNetFilePath, predictNetNamed: self.predictNetFilePath)
+                        if let index = downloadedModels.index(of: self.modelName) {
+                            downloadedModels.remove(at: index)
+                            downloadedModelInitPaths.remove(at: index)
+                            downloadedModelPredictPaths.remove(at: index)
+                        }
+                        downloadedModels.append(self.modelName)
+                        downloadedModelInitPaths.append(self.initNetFilePath)
+                        downloadedModelPredictPaths.append(self.predictNetFilePath)
                     } catch {
                         print("reload model failed")
                     }

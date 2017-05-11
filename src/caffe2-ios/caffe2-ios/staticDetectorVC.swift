@@ -17,10 +17,13 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
     @IBOutlet weak var imageDisplayer: UIImageView!
     @IBOutlet weak var resultDisplayer: UITextView!
     var pickedImages = [UIImage]()
+    var allModels : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Initializing ...")
+        self.allModels = builtInModels
+        self.allModels.append(contentsOf: downloadedModels)
         self.imagePickerController.delegate = self
         self.imagePickerController.allowsEditing = false
         self.modelPickerView.delegate = self
@@ -28,9 +31,10 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
         self.imageDisplayer.image = self.demoImg
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    override func viewWillAppear(_ animated: Bool) {
+        self.allModels = builtInModels
+        self.allModels.append(contentsOf: downloadedModels)
+        self.modelPickerView.reloadAllComponents()
     }
     
     enum CommonError: Error{
@@ -93,22 +97,23 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return modelPickerData.count
+        return self.allModels.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return modelPickerData[row]
+        return self.allModels[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let attributedString = NSAttributedString(string: modelPickerData[row], attributes: [NSForegroundColorAttributeName : UIColor.green])
-        
-        return attributedString
+        if row < builtInModels.count {
+            return NSAttributedString(string: self.allModels[row], attributes: [NSForegroundColorAttributeName : UIColor.green])
+        }
+        return NSAttributedString(string: self.allModels[row], attributes: [NSForegroundColorAttributeName : UIColor.blue])
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        modelPicked = modelPickerData[row]
-        print("\(modelPickerData[row]) is chosen")
+        modelPicked = self.allModels[row]
+        print("\(allModels[row]) is chosen")
     }
 }
 
