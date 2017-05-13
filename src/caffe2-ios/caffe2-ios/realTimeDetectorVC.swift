@@ -16,7 +16,7 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     let processingErrorMsg = "[Error] Processing Error \n"
     var result = ""
     var memUsage = 0 as Float
-    var elaspe = ""
+    var elapse = ""
     
     @IBOutlet weak var resultDisplayer: UITextView!
     @IBOutlet weak var memUsageDisplayer: UITextView!
@@ -108,7 +108,7 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         let end = DispatchTime.now()
         let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds // <<<<< Difference in nano seconds (UInt64)
         let timeInterval = Double(nanoTime) / 1_000_000_000 // Technically could overflow for long running tests
-        self.elaspe = "\(timeInterval) seconds"
+        self.elapse = "\(timeInterval) seconds"
         print("Time elapsed of function (classifier): \(timeInterval) seconds")
     }
     
@@ -163,7 +163,7 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         // Force UI work to be done in main thread
         DispatchQueue.main.async(execute: {
             self.resultDisplayer.text = self.result
-            self.memUsageDisplayer.text = "Memory usage: \(self.memUsage) MB \nTime elasped: \(self.elaspe) \nModel: \(modelPicked)"
+            self.memUsageDisplayer.text = "Memory usage: \(self.memUsage) MB \nTime elapsed: \(self.elapse) \nModel: \(modelPicked)"
         })
     }
     

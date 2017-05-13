@@ -24,6 +24,7 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
     
     var didPickDownloaded = false
     var pickedDownloadedModelIndex = 0
+    var elapse = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,20 +91,27 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
         print("Switched the model to \(modelPicked)!")
     }
     func classifier(image: UIImage){
+        let start = DispatchTime.now()
         self.imageDisplayer.image = image
         let resizedImage = resizeImage(image: image, newWidth: CGFloat(500))
         if let result = caffe.prediction(regarding: resizedImage!){
+            let end = DispatchTime.now()
+            let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds // <<<<< Difference in nano seconds (UInt64)
+            let timeInterval = Double(nanoTime) / 1_000_000_000 // Technically could overflow for long running tests
+            self.elapse = "\(timeInterval) seconds"
+            
             switch modelPicked {
             case "squeezeNet":
                 let sorted = result.map{$0.floatValue}.enumerated().sorted(by: {$0.element > $1.element})[0...10]
                 let finalResult = sorted.map{"\($0.element*100)% chance to be: \(squeezenetClassMapping[$0.offset]!)"}.joined(separator: "\n\n")
                 
+                self.resultDisplayer.text = "Time consumption: \n\(self.elapse)\n \nResults: \n\(finalResult)"
                 print("Result is \n\(finalResult)")
-                self.resultDisplayer.text = finalResult
             default:
                 print("Result is \n\(result)")
-                self.resultDisplayer.text = "\(result)"
+                self.resultDisplayer.text = "Time consumption: \n\(self.elapse)\n \nResults: \n\(result)"
             }
+            print("Time consumption: \(self.elapse)")
             
         }
         
