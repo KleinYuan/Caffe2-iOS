@@ -24,7 +24,7 @@ NS_SWIFT_NAME(prediction(regarding:));
 - (nullable) reloadModel:(nonnull NSString*)initNetFilename predict:(nonnull NSString*)predictNetFilename error:(NSError * _Nullable * _Nullable)error
 NS_SWIFT_NAME(reloadModel(initNetNamed:predictNetNamed:));
 
-- (nullable) loadDownloadedModel:(nonnull NSString*)initNetFilename predict:(nonnull NSString*)predictNetFilename error:(NSError * _Nullable * _Nullable)error
-NS_SWIFT_NAME(loadDownloadedModel(initNetNamed:predictNetNamed:));
+- (nullable) loadDownloadedModel:(nonnull NSString*)initNetFilePath predict:(nonnull NSString*)predictNetFilePath error:(NSError * _Nullable * _Nullable)error
+NS_SWIFT_NAME(loadDownloadedModel(initNetFilePath:predictNetFilePath:));
 
 @end

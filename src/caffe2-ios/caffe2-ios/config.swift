@@ -10,11 +10,10 @@
 
 var caffe = try! Caffe2(initNetNamed: "squeezeNetInit", predictNetNamed: "squeezeNetPredict")
 let builtInModels = ["squeezeNet","tinyYolo"]
-var downloadedModels : [String] = []
-var downloadedModelInitPaths : [String] = []
-var downloadedModelPredictPaths : [String] = []
-//let modelPickerData = ["squeezeNet", "tinyDarknet", "bvlcReferenceRcnnIlsvrc"]
 var modelPicked = builtInModels[0]
+let kDownloadedModelNames = "downloadedModelNames"
+let kDownloadedModelInitPaths = "downloadedModelInitPaths"
+let kDownloadedModelPredictPaths = "downloadedModelPredictPaths"
 let squeezenetClassMapping =
 [
  0: "tench, Tinca tinca",

@@ -17,13 +17,17 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
     @IBOutlet weak var imageDisplayer: UIImageView!
     @IBOutlet weak var resultDisplayer: UITextView!
     var pickedImages = [UIImage]()
-    var allModels : [String] = []
+    var downloadedModelNames : [String] = []
+    var downloadedModelInitPaths : [String] = []
+    var downloadedModelPredictPaths : [String] = []
+    
+    var didPickDownloaded = false
+    var pickedDownloadedModelIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Initializing ...")
-        self.allModels = builtInModels
-        self.allModels.append(contentsOf: downloadedModels)
+        self._reloadModels()
         self.imagePickerController.delegate = self
         self.imagePickerController.allowsEditing = false
         self.modelPickerView.delegate = self
@@ -32,8 +36,7 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.allModels = builtInModels
-        self.allModels.append(contentsOf: downloadedModels)
+        self._reloadModels()
         self.modelPickerView.reloadAllComponents()
     }
     
@@ -50,7 +53,12 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     @IBAction func reloadModel(_ sender: UIButton) {
-        try! caffe.reloadModel(initNetNamed: "\(modelPicked)Init", predictNetNamed: "\(modelPicked)Predict")
+        if self.didPickDownloaded {
+            try! caffe.loadDownloadedModel(initNetFilePath: self.downloadedModelInitPaths[self.pickedDownloadedModelIndex],
+                                           predictNetFilePath: self.downloadedModelPredictPaths[self.pickedDownloadedModelIndex])
+        } else {
+            try! caffe.reloadModel(initNetNamed: "\(modelPicked)Init", predictNetNamed: "\(modelPicked)Predict")
+        }
         print("Switched the model to \(modelPicked)!")
     }
     func classifier(image: UIImage){
@@ -97,23 +105,40 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.allModels.count
+        return builtInModels.count + self.downloadedModelNames.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.allModels[row]
+        if row < builtInModels.count {
+            return builtInModels[row]
+        } else {
+            return self.downloadedModelNames[row - builtInModels.count]
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         if row < builtInModels.count {
-            return NSAttributedString(string: self.allModels[row], attributes: [NSForegroundColorAttributeName : UIColor.green])
+            return NSAttributedString(string: builtInModels[row], attributes: [NSForegroundColorAttributeName : UIColor.green])
         }
-        return NSAttributedString(string: self.allModels[row], attributes: [NSForegroundColorAttributeName : UIColor.blue])
+        return NSAttributedString(string: self.downloadedModelNames[row - builtInModels.count], attributes: [NSForegroundColorAttributeName : UIColor.blue])
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        modelPicked = self.allModels[row]
-        print("\(allModels[row]) is chosen")
+        if row < builtInModels.count {
+            modelPicked = builtInModels[row]
+            self.didPickDownloaded = false
+        } else {
+            self.pickedDownloadedModelIndex = row - builtInModels.count
+            self.didPickDownloaded = true
+            modelPicked = self.downloadedModelNames[self.pickedDownloadedModelIndex]
+        }
+        print("\(modelPicked) is chosen")
+    }
+    
+    private func _reloadModels() {
+        self.downloadedModelNames = UserDefaults.standard.stringArray(forKey: kDownloadedModelNames) ?? []
+        self.downloadedModelInitPaths = UserDefaults.standard.stringArray(forKey: kDownloadedModelInitPaths) ?? []
+        self.downloadedModelPredictPaths = UserDefaults.standard.stringArray(forKey: kDownloadedModelPredictPaths) ?? []
     }
 }
 

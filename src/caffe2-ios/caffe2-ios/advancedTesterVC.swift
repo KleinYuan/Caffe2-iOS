@@ -228,15 +228,22 @@ class advancedTesterVC: UIViewController,UINavigationControllerDelegate, UIImage
                     self.predictNetFilePath = newLocation!.path
                     self.resultsTextView.text = "Model \(self.modelName) downloaded"
                     do {
-                        try caffe.loadDownloadedModel(initNetNamed: self.initNetFilePath, predictNetNamed: self.predictNetFilePath)
-                        if let index = downloadedModels.index(of: self.modelName) {
-                            downloadedModels.remove(at: index)
+                        try caffe.loadDownloadedModel(initNetFilePath: self.initNetFilePath, predictNetFilePath: self.predictNetFilePath)
+                        var downloadedModelNames : [String] = UserDefaults.standard.stringArray(forKey: kDownloadedModelNames) ?? []
+                        var downloadedModelInitPaths : [String] = UserDefaults.standard.stringArray(forKey: kDownloadedModelInitPaths) ?? []
+                        var downloadedModelPredictPaths : [String] = UserDefaults.standard.stringArray(forKey: kDownloadedModelPredictPaths) ?? []
+                        
+                        if let index = downloadedModelNames.index(of: self.modelName) {
+                            downloadedModelNames.remove(at: index)
                             downloadedModelInitPaths.remove(at: index)
                             downloadedModelPredictPaths.remove(at: index)
                         }
-                        downloadedModels.append(self.modelName)
+                        downloadedModelNames.append(self.modelName)
                         downloadedModelInitPaths.append(self.initNetFilePath)
                         downloadedModelPredictPaths.append(self.predictNetFilePath)
+                        UserDefaults.standard.setValue(downloadedModelNames, forKeyPath: kDownloadedModelNames)
+                        UserDefaults.standard.setValue(downloadedModelInitPaths, forKeyPath: kDownloadedModelInitPaths)
+                        UserDefaults.standard.setValue(downloadedModelPredictPaths, forKeyPath: kDownloadedModelPredictPaths)
                     } catch {
                         print("reload model failed")
                     }
