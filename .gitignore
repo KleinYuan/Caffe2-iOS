@@ -1,8 +1,7 @@
 # Xcode
-
 # Ignore caffe2
 src/caffe2
-
+src/caffe2-ios/caffe2-ios/*.pb
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
