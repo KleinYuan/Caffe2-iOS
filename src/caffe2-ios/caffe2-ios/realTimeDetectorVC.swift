@@ -81,13 +81,6 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     func classifier(img: UIImage){
         let start = DispatchTime.now()
-//        if let result = caffe.prediction(regarding: img){
-//            let sorted = result.map{$0.floatValue}.enumerated().sorted(by: {$0.element > $1.element})[0...10]
-//            let finalResult = sorted.map{"\($0.element*100)% chance to be: \(squeezenetClassMapping[$0.offset]!)"}.joined(separator: "\n\n")
-//            
-//            print("Result is \n\(finalResult)")
-//
-//        }
         if let predictedResult = caffe.prediction(regarding: img){
             switch modelPicked {
             case "squeezeNet":
