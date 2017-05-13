@@ -2,9 +2,42 @@
 
 This is a project to demo how to use `Caffe2`/`OpenCV 2` to build an iOS application doing real time object classification.
 
+- [X] iOS (Swift/Objective-C/C++) with Caffe2
+
+- [X] Test build in models with your own photo
+
+- [X] Memory Consumption and Time Elapse Data
+
+- [X] Live (Real Time) detection
+
+- [X] Download your own model on the fly! And test it!
+
+- [X] Manage models locally on your iPhone
+
+- [X] Overall control on every layer (from beginger to expert)
+
+- [X] Warm community and welcome to contribute
+
+- [X] Star us if you like
+
+
+# For both Beginners and Experts
+
+We provide two stable versions in here with:
+
+- [X] [Lite stable version](https://github.com/KleinYuan/Caffe2-iOS/wiki/Versions#beginners) for beginners to experience how the wrapper work and play with the demo
+
 **Static Classifier**             |  **Real Time Classifier**
 :-------------------------:|:-------------------------:
 ![static](https://cloud.githubusercontent.com/assets/8921629/25570968/37b26e02-2ddf-11e7-806f-20c8e2b0d844.PNG)  | ![realtime](https://cloud.githubusercontent.com/assets/8921629/25570965/32d0b43e-2ddf-11e7-816a-925a2adbc579.PNG)
+
+
+- [X] [Exper stable version](https://github.com/KleinYuan/Caffe2-iOS/wiki/Versions#experts) for experts to explore more possibilities
+
+**Static Classifier**             |  **Real Time Classifier**     |**Model Downloader**
+:-------------------------:|:-------------------------:|:-------------------------:
+![static](https://cloud.githubusercontent.com/assets/8921629/26028288/41835f84-37d2-11e7-83da-8a4e39613459.PNG)  | ![realtime](https://cloud.githubusercontent.com/assets/8921629/26028274/155205d2-37d2-11e7-907a-3c5a3db0faf7.PNG) | ![downloader](https://cloud.githubusercontent.com/assets/8921629/26028283/3627edf8-37d2-11e7-9d45-0b7c6575ede1.PNG)
+
 
 ### Dependencies
 
@@ -19,11 +52,9 @@ This is a project to demo how to use `Caffe2`/`OpenCV 2` to build an iOS applica
 
 # Step by Step Tutorial
 
-*I will try to elaborate below for more details and screenshots!*
-
 - [X] Clone this repo into a folder, let's say `~/Desktop/`, then you will have `~/Desktop/Caffe2-iOS` when clone is done
 
-- [X] Navigate to `~/Desktop/Caffe2-iOS/src` folder and run `bash ./setup.sh`, which will automatically download and build iOS Caffe2 in a paralleled folder besides  `~/Desktop/Caffe2-iOS/src/caffe2-ios` called `caffe2`
+- [X] Navigate to `~/Desktop/Caffe2-iOS/src` folder and run `bash ./setup.sh`, which will automatically download and build iOS Caffe2 in a paralleled folder besides  `~/Desktop/Caffe2-iOS/src/caffe2-ios` called `caffe2` (it's important to make sure this step is done and it may take around 20-30 min to finish)
 
 - [X] When previous step is done, open `~/DesktopCaffe2-iOS/src/caffe2-ios` with Xcode (>8.0)
 
@@ -35,14 +66,42 @@ This is a project to demo how to use `Caffe2`/`OpenCV 2` to build an iOS applica
 
 - [X] Open the app and press `Run` to check the result of a pre-loaded image (cute Panda!) and press `live` to go to live mode
 
+
+# Validation and debug
+
+There are some potential issues that you will have (I will keep adding if I sense some in issues):
+
+### Caffe2 iOS Build failed
+
+1-a. [Error Message 1](https://github.com/KleinYuan/Caffe2-iOS/issues/11): When build project in Xcode you see this error `Cannot find caffe2/proto/caffe2.pb.h`
+
+1-b. Error Message 2: When running setup.sh you see this in terminal `${YOUR_PATH}/Caffe2-iOS/src/caffe2/third_party/protobuf/cmake: is a directory`
+
+2. Description: Those two are related and all because that you failed to build the caffe2 ios and check this folder [architecture](https://cloud.githubusercontent.com/assets/8921629/26027802/86d4fb6e-37c9-11e7-9f08-1c771dd236f9.png) to validate your build (you should be able to see the `caffe2.pb.h`)
+
+3. Debug and how to fix it: Mostly, the root cause is that your `cmake` is broken (not broken broken, more like configuration/path changed by other services/software) and you probably wanna run `brew install cmake` to reinstall it
+
+
+### Load model failed or thread killed in the mid
+
+1. Error Message:  ```Reading dangerously large protocol message. If the message turns out to be larger than 67108864 bytes, parsing will be halted for security reasons. To increase the limit (or to disable these warnings), see CodedInputStream::SetTotalBytesLimit() in google/protobuf/io/coded_stream.h.```
+
+2. Description: As you can see in the caffe2 [repo](https://github.com/caffe2/caffe2/commit/d9e90a968d29116d9a60e61f7f358de7aef84498), that they reduced the [protobuf](https://github.com/google/protobuf/tree/a428e42072765993ff674fda72863c9f1aa2d268), which is the tool they use to hanlde the communication down to version 3.1.0 and only have [64MB](https://github.com/google/protobuf/blob/a428e42072765993ff674fda72863c9f1aa2d268/src/google/protobuf/io/coded_stream.h#L625) limit. Therefore, when you load a model larger than that, boooooomb, memory exploed and thread got killed.
+
+3. Debug and how to fix it: 
+	- [X] After you [download](https://github.com/KleinYuan/Caffe2-iOS/blob/master/src/setup.sh#L2) and build the caffe2, hold on and modify something to increase the limit first
+
+	- [X] Find this [file](https://github.com/google/protobuf/tree/a428e42072765993ff674fda72863c9f1aa2d268), which is the tool they use to hanlde the communication down to version 3.1.0 and only have [64MB](https://github.com/google/protobuf/blob/a428e42072765993ff674fda72863c9f1aa2d268/src/google/protobuf/io/coded_stream.h#L625) and change the limit to whatever you want (also change the warning limit)
+
+	- [X] Then build caffe2-ios and Tada
+
+	- [X] Alternative method see [here](https://github.com/caffe2/caffe2/issues/474#issuecomment-298965440)
+
+
 # Performance 
 
 *The initial slope is for a static 4KB image, around 50 MB and Note that memory usage in live mode might not be the same as the one shown in Xcode (slightly different). And also, remember the memory data in the app is aggregated and therefore, if you are really interested in checking performance of a specific process, open Xcode :)*
 
-### For low res version
-![memorycomsuption](https://cloud.githubusercontent.com/assets/8921629/25562545/29e545f8-2d3d-11e7-9ab8-f780de05ddeb.png)
-
-### For high res version
 ![memorycomsuptionhighres](https://cloud.githubusercontent.com/assets/8921629/25568321/066329ec-2db5-11e7-9a65-de6861ed2f25.png)
 
 # Future Work (meaning that it will be here in a few days)
@@ -59,5 +118,3 @@ We have a clear scope for this repo below:
 
 # License
 [License](LICENSE)
-
-##### Note: Using a large picture may result in memory issue (because Caffe2.mm will load a super big vector and thus memory exploded) and if you want to see it, just try the `pugs.jpg` which will crash the app.
