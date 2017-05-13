@@ -7,22 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C03C1A71EBE4E9900BCA7E6 /* libCAFFE2_NNPACK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03C1A51EBE4E9900BCA7E6 /* libCAFFE2_NNPACK.a */; };
+		7C03C1A81EBE4E9900BCA7E6 /* libCAFFE2_PTHREADPOOL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03C1A61EBE4E9900BCA7E6 /* libCAFFE2_PTHREADPOOL.a */; };
+		7C03C1AB1EBE4EAB00BCA7E6 /* libprotobuf-lite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03C1A91EBE4EAB00BCA7E6 /* libprotobuf-lite.a */; };
+		7C03C1AC1EBE4EAB00BCA7E6 /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03C1AA1EBE4EAB00BCA7E6 /* libprotobuf.a */; };
+		7C03C1B01EBE844A00BCA7E6 /* libCaffe2_CPU.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03C1AF1EBE844A00BCA7E6 /* libCaffe2_CPU.a */; };
+		7C5702811EBC47C4002F6227 /* tinyYoloInit.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C57027F1EBC47C4002F6227 /* tinyYoloInit.pb */; };
+		7C5702821EBC47C4002F6227 /* tinyYoloPredict.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C5702801EBC47C4002F6227 /* tinyYoloPredict.pb */; };
 		7C8E442C1EB329FC00BA6D76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E442B1EB329FC00BA6D76 /* AppDelegate.swift */; };
 		7C8E442E1EB329FC00BA6D76 /* staticDetectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E442D1EB329FC00BA6D76 /* staticDetectorVC.swift */; };
 		7C8E44311EB329FC00BA6D76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E442F1EB329FC00BA6D76 /* Main.storyboard */; };
 		7C8E44331EB329FC00BA6D76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E44321EB329FC00BA6D76 /* Assets.xcassets */; };
 		7C8E44361EB329FC00BA6D76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E44341EB329FC00BA6D76 /* LaunchScreen.storyboard */; };
-		7C8E44411EB32A7000BA6D76 /* libCaffe2_CPU.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8E443D1EB32A7000BA6D76 /* libCaffe2_CPU.a */; };
-		7C8E44421EB32A7000BA6D76 /* libCAFFE2_NNPACK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8E443E1EB32A7000BA6D76 /* libCAFFE2_NNPACK.a */; };
-		7C8E44431EB32A7000BA6D76 /* libCAFFE2_PTHREADPOOL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8E443F1EB32A7000BA6D76 /* libCAFFE2_PTHREADPOOL.a */; };
-		7C8E44441EB32A7000BA6D76 /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8E44401EB32A7000BA6D76 /* libprotobuf.a */; };
-		7C8E44461EB32A7900BA6D76 /* init_net.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E44451EB32A7900BA6D76 /* init_net.pb */; };
-		7C8E44481EB32A7D00BA6D76 /* predict_net.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E44471EB32A7D00BA6D76 /* predict_net.pb */; };
+		7C8E44461EB32A7900BA6D76 /* squeezeNetInit.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E44451EB32A7900BA6D76 /* squeezeNetInit.pb */; };
+		7C8E44481EB32A7D00BA6D76 /* squeezeNetPredict.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C8E44471EB32A7D00BA6D76 /* squeezeNetPredict.pb */; };
 		7C8E444D1EB32B2D00BA6D76 /* Caffe2.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E444C1EB32B2D00BA6D76 /* Caffe2.mm */; };
 		7C8E44521EB32EAF00BA6D76 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8E44511EB32EAF00BA6D76 /* opencv2.framework */; };
 		7C9DDAA51EB55C7E0037EC52 /* panda.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7C9DDAA41EB55C7E0037EC52 /* panda.jpeg */; };
 		7C9DDAA71EB5627D0037EC52 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9DDAA61EB5627D0037EC52 /* AVFoundation.framework */; };
 		7C9DDAA91EB564760037EC52 /* realTimeDetectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9DDAA81EB564760037EC52 /* realTimeDetectorVC.swift */; };
+		7CD2EB071EBC54C700681030 /* advancedTesterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD2EB061EBC54C700681030 /* advancedTesterVC.swift */; };
+		7CD2EB091EBC569700681030 /* helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD2EB081EBC569700681030 /* helpers.swift */; };
 		7CE9854E1EB41DB700CA112F /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE9854D1EB41DB700CA112F /* libstdc++.tbd */; };
 		7CE985531EB41F8C00CA112F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE985521EB41F8C00CA112F /* Accelerate.framework */; };
 		7CE985551EB41F9400CA112F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE985541EB41F9400CA112F /* Foundation.framework */; };
@@ -34,6 +39,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C03C1A51EBE4E9900BCA7E6 /* libCAFFE2_NNPACK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCAFFE2_NNPACK.a; sourceTree = "<group>"; };
+		7C03C1A61EBE4E9900BCA7E6 /* libCAFFE2_PTHREADPOOL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCAFFE2_PTHREADPOOL.a; sourceTree = "<group>"; };
+		7C03C1A91EBE4EAB00BCA7E6 /* libprotobuf-lite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libprotobuf-lite.a"; sourceTree = "<group>"; };
+		7C03C1AA1EBE4EAB00BCA7E6 /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libprotobuf.a; sourceTree = "<group>"; };
+		7C03C1AF1EBE844A00BCA7E6 /* libCaffe2_CPU.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCaffe2_CPU.a; sourceTree = "<group>"; };
+		7C57027F1EBC47C4002F6227 /* tinyYoloInit.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = tinyYoloInit.pb; sourceTree = "<group>"; };
+		7C5702801EBC47C4002F6227 /* tinyYoloPredict.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = tinyYoloPredict.pb; sourceTree = "<group>"; };
 		7C8E44281EB329FC00BA6D76 /* caffe2-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "caffe2-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C8E442B1EB329FC00BA6D76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C8E442D1EB329FC00BA6D76 /* staticDetectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = staticDetectorVC.swift; sourceTree = "<group>"; };
@@ -41,12 +53,8 @@
 		7C8E44321EB329FC00BA6D76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C8E44351EB329FC00BA6D76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C8E44371EB329FC00BA6D76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7C8E443D1EB32A7000BA6D76 /* libCaffe2_CPU.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCaffe2_CPU.a; sourceTree = "<group>"; };
-		7C8E443E1EB32A7000BA6D76 /* libCAFFE2_NNPACK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCAFFE2_NNPACK.a; sourceTree = "<group>"; };
-		7C8E443F1EB32A7000BA6D76 /* libCAFFE2_PTHREADPOOL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCAFFE2_PTHREADPOOL.a; sourceTree = "<group>"; };
-		7C8E44401EB32A7000BA6D76 /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libprotobuf.a; sourceTree = "<group>"; };
-		7C8E44451EB32A7900BA6D76 /* init_net.pb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; path = init_net.pb; sourceTree = "<group>"; };
-		7C8E44471EB32A7D00BA6D76 /* predict_net.pb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = predict_net.pb; sourceTree = "<group>"; };
+		7C8E44451EB32A7900BA6D76 /* squeezeNetInit.pb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; path = squeezeNetInit.pb; sourceTree = "<group>"; };
+		7C8E44471EB32A7D00BA6D76 /* squeezeNetPredict.pb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; path = squeezeNetPredict.pb; sourceTree = "<group>"; };
 		7C8E44491EB32A8300BA6D76 /* Prefix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.h; sourceTree = "<group>"; };
 		7C8E444B1EB32B2D00BA6D76 /* Caffe2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Caffe2.h; sourceTree = "<group>"; };
 		7C8E444C1EB32B2D00BA6D76 /* Caffe2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Caffe2.mm; sourceTree = "<group>"; };
@@ -55,6 +63,8 @@
 		7C9DDAA41EB55C7E0037EC52 /* panda.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = panda.jpeg; sourceTree = "<group>"; };
 		7C9DDAA61EB5627D0037EC52 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7C9DDAA81EB564760037EC52 /* realTimeDetectorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = realTimeDetectorVC.swift; sourceTree = "<group>"; };
+		7CD2EB061EBC54C700681030 /* advancedTesterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = advancedTesterVC.swift; sourceTree = "<group>"; };
+		7CD2EB081EBC569700681030 /* helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = helpers.swift; sourceTree = "<group>"; };
 		7CE9854D1EB41DB700CA112F /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		7CE985521EB41F8C00CA112F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		7CE985541EB41F9400CA112F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -76,12 +86,13 @@
 				7CE985571EB41F9B00CA112F /* UIKit.framework in Frameworks */,
 				7CE985551EB41F9400CA112F /* Foundation.framework in Frameworks */,
 				7CE985531EB41F8C00CA112F /* Accelerate.framework in Frameworks */,
+				7C03C1AC1EBE4EAB00BCA7E6 /* libprotobuf.a in Frameworks */,
+				7C03C1B01EBE844A00BCA7E6 /* libCaffe2_CPU.a in Frameworks */,
 				7CE9854E1EB41DB700CA112F /* libstdc++.tbd in Frameworks */,
-				7C8E44441EB32A7000BA6D76 /* libprotobuf.a in Frameworks */,
-				7C8E44411EB32A7000BA6D76 /* libCaffe2_CPU.a in Frameworks */,
-				7C8E44421EB32A7000BA6D76 /* libCAFFE2_NNPACK.a in Frameworks */,
 				7C8E44521EB32EAF00BA6D76 /* opencv2.framework in Frameworks */,
-				7C8E44431EB32A7000BA6D76 /* libCAFFE2_PTHREADPOOL.a in Frameworks */,
+				7C03C1A81EBE4E9900BCA7E6 /* libCAFFE2_PTHREADPOOL.a in Frameworks */,
+				7C03C1A71EBE4E9900BCA7E6 /* libCAFFE2_NNPACK.a in Frameworks */,
+				7C03C1AB1EBE4EAB00BCA7E6 /* libprotobuf-lite.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +119,7 @@
 		7C8E442A1EB329FC00BA6D76 /* caffe2-ios */ = {
 			isa = PBXGroup;
 			children = (
+				7CD2EB0A1EBC569C00681030 /* util */,
 				7CF78F561EB569ED009DB460 /* config */,
 				7C9DDAAA1EB564DC0037EC52 /* viewControllers */,
 				7CE985611EB42C0C00CA112F /* wrappers */,
@@ -129,8 +141,17 @@
 			children = (
 				7C9DDAA81EB564760037EC52 /* realTimeDetectorVC.swift */,
 				7C8E442D1EB329FC00BA6D76 /* staticDetectorVC.swift */,
+				7CD2EB061EBC54C700681030 /* advancedTesterVC.swift */,
 			);
 			name = viewControllers;
+			sourceTree = "<group>";
+		};
+		7CD2EB0A1EBC569C00681030 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				7CD2EB081EBC569700681030 /* helpers.swift */,
+			);
+			name = util;
 			sourceTree = "<group>";
 		};
 		7CE9854C1EB41DB700CA112F /* Frameworks */ = {
@@ -148,10 +169,11 @@
 		7CE9854F1EB41DFA00CA112F /* caffe2 */ = {
 			isa = PBXGroup;
 			children = (
-				7C8E443D1EB32A7000BA6D76 /* libCaffe2_CPU.a */,
-				7C8E443E1EB32A7000BA6D76 /* libCAFFE2_NNPACK.a */,
-				7C8E443F1EB32A7000BA6D76 /* libCAFFE2_PTHREADPOOL.a */,
-				7C8E44401EB32A7000BA6D76 /* libprotobuf.a */,
+				7C03C1AF1EBE844A00BCA7E6 /* libCaffe2_CPU.a */,
+				7C03C1A91EBE4EAB00BCA7E6 /* libprotobuf-lite.a */,
+				7C03C1AA1EBE4EAB00BCA7E6 /* libprotobuf.a */,
+				7C03C1A51EBE4E9900BCA7E6 /* libCAFFE2_NNPACK.a */,
+				7C03C1A61EBE4E9900BCA7E6 /* libCAFFE2_PTHREADPOOL.a */,
 			);
 			name = caffe2;
 			sourceTree = "<group>";
@@ -168,8 +190,10 @@
 		7CE985511EB41E2600CA112F /* models */ = {
 			isa = PBXGroup;
 			children = (
-				7C8E44471EB32A7D00BA6D76 /* predict_net.pb */,
-				7C8E44451EB32A7900BA6D76 /* init_net.pb */,
+				7C57027F1EBC47C4002F6227 /* tinyYoloInit.pb */,
+				7C5702801EBC47C4002F6227 /* tinyYoloPredict.pb */,
+				7C8E44471EB32A7D00BA6D76 /* squeezeNetPredict.pb */,
+				7C8E44451EB32A7900BA6D76 /* squeezeNetInit.pb */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -266,13 +290,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C5702811EBC47C4002F6227 /* tinyYoloInit.pb in Resources */,
 				7C8E44361EB329FC00BA6D76 /* LaunchScreen.storyboard in Resources */,
 				7C8E44331EB329FC00BA6D76 /* Assets.xcassets in Resources */,
-				7C8E44461EB32A7900BA6D76 /* init_net.pb in Resources */,
+				7C5702821EBC47C4002F6227 /* tinyYoloPredict.pb in Resources */,
+				7C8E44461EB32A7900BA6D76 /* squeezeNetInit.pb in Resources */,
 				7C8E44311EB329FC00BA6D76 /* Main.storyboard in Resources */,
 				7CE985591EB422FA00CA112F /* pugs.jpg in Resources */,
 				7C9DDAA51EB55C7E0037EC52 /* panda.jpeg in Resources */,
-				7C8E44481EB32A7D00BA6D76 /* predict_net.pb in Resources */,
+				7C8E44481EB32A7D00BA6D76 /* squeezeNetPredict.pb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +316,8 @@
 				7CF78F581EB56A00009DB460 /* config.swift in Sources */,
 				7CE9855C1EB4280500CA112F /* OpenCVWrapper.mm in Sources */,
 				7C8E444D1EB32B2D00BA6D76 /* Caffe2.mm in Sources */,
+				7CD2EB071EBC54C700681030 /* advancedTesterVC.swift in Sources */,
+				7CD2EB091EBC569700681030 /* helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
