@@ -16,6 +16,7 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
     let imagePickerController = UIImagePickerController()
     @IBOutlet weak var imageDisplayer: UIImageView!
     @IBOutlet weak var resultDisplayer: UITextView!
+    @IBOutlet weak var deleteModelButtonDisplay: UIButton!
     var pickedImages = [UIImage]()
     var downloadedModelNames : [String] = []
     var downloadedModelInitPaths : [String] = []
@@ -33,6 +34,8 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
         self.modelPickerView.delegate = self
         self.modelPickerView.dataSource = self
         self.imageDisplayer.image = self.demoImg
+        self.deleteModelButtonDisplay.isEnabled = false
+        self.deleteModelButtonDisplay.alpha = 0.5
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +47,31 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
         case FoundNil(String)
     }
     
+    @IBAction func deleteModelButton(_ sender: UIButton) {
+        if let documentsDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first{
+            var locationToBeDeleted = NSURL(fileURLWithPath: documentsDirectoryPath).appendingPathComponent("\(modelPicked)Predict.pb")
+            do {
+                try FileManager.default.removeItem(at: locationToBeDeleted!)
+                UserDefaults.standard.removeObject(forKey: kDownloadedModelPredictPaths)
+                print("\(modelPicked)Predict.pb deleted")
+            } catch {
+                print("error deleting \(modelPicked)Predict.pb ")
+            }
+            
+            locationToBeDeleted = NSURL(fileURLWithPath: documentsDirectoryPath).appendingPathComponent("\(modelPicked)Init.pb")
+            do {
+                try FileManager.default.removeItem(at: locationToBeDeleted!)
+                UserDefaults.standard.removeObject(forKey: kDownloadedModelInitPaths)
+                print("\(modelPicked)Init.pb deleted")
+            } catch {
+                print("error deleting \(modelPicked)Init.pb ")
+            }
+            UserDefaults.standard.removeObject(forKey: kDownloadedModelNames)
+        }
+        self._reloadModels()
+        self.modelPickerView.reloadAllComponents()
+        
+    }
     @IBAction func demoButton(_ sender: UIButton) {
         self.classifier(image: demoImg!)
     }
@@ -127,10 +155,16 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
         if row < builtInModels.count {
             modelPicked = builtInModels[row]
             self.didPickDownloaded = false
+            print("built in model chosen")
+            self.deleteModelButtonDisplay.isEnabled = false
+            self.deleteModelButtonDisplay.alpha = 0.5
         } else {
             self.pickedDownloadedModelIndex = row - builtInModels.count
             self.didPickDownloaded = true
             modelPicked = self.downloadedModelNames[self.pickedDownloadedModelIndex]
+            print("downloaded in model chosen")
+            self.deleteModelButtonDisplay.isEnabled = true
+            self.deleteModelButtonDisplay.alpha = 1.0
         }
         print("\(modelPicked) is chosen")
     }

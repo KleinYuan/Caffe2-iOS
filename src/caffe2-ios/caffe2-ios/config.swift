@@ -14,6 +14,7 @@ var modelPicked = builtInModels[0]
 let kDownloadedModelNames = "downloadedModelNames"
 let kDownloadedModelInitPaths = "downloadedModelInitPaths"
 let kDownloadedModelPredictPaths = "downloadedModelPredictPaths"
+var session = URLSession()
 let squeezenetClassMapping =
 [
  0: "tench, Tinca tinca",
