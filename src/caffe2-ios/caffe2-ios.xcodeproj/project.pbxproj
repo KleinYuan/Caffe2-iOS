@@ -7,17 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C03C1991EBE3D7D00BCA7E6 /* bvlcReferenceRcnnIlsvrcInit.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C03C1971EBE3D7D00BCA7E6 /* bvlcReferenceRcnnIlsvrcInit.pb */; };
-		7C03C19A1EBE3D7D00BCA7E6 /* bvlcReferenceRcnnIlsvrcPredict.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C03C1981EBE3D7D00BCA7E6 /* bvlcReferenceRcnnIlsvrcPredict.pb */; };
 		7C03C1A71EBE4E9900BCA7E6 /* libCAFFE2_NNPACK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03C1A51EBE4E9900BCA7E6 /* libCAFFE2_NNPACK.a */; };
 		7C03C1A81EBE4E9900BCA7E6 /* libCAFFE2_PTHREADPOOL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03C1A61EBE4E9900BCA7E6 /* libCAFFE2_PTHREADPOOL.a */; };
 		7C03C1AB1EBE4EAB00BCA7E6 /* libprotobuf-lite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03C1A91EBE4EAB00BCA7E6 /* libprotobuf-lite.a */; };
 		7C03C1AC1EBE4EAB00BCA7E6 /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03C1AA1EBE4EAB00BCA7E6 /* libprotobuf.a */; };
 		7C03C1B01EBE844A00BCA7E6 /* libCaffe2_CPU.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03C1AF1EBE844A00BCA7E6 /* libCaffe2_CPU.a */; };
-		7C0498011EBDB95E000AABD0 /* tinyDarknetInit.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C0497FF1EBDB95E000AABD0 /* tinyDarknetInit.pb */; };
-		7C0498021EBDB95E000AABD0 /* tinyDarknetPredict.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C0498001EBDB95E000AABD0 /* tinyDarknetPredict.pb */; };
-		7C57027D1EBC47A9002F6227 /* googLeNetInit.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C57027B1EBC47A9002F6227 /* googLeNetInit.pb */; };
-		7C57027E1EBC47A9002F6227 /* googLeNetPredict.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C57027C1EBC47A9002F6227 /* googLeNetPredict.pb */; };
 		7C5702811EBC47C4002F6227 /* tinyYoloInit.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C57027F1EBC47C4002F6227 /* tinyYoloInit.pb */; };
 		7C5702821EBC47C4002F6227 /* tinyYoloPredict.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C5702801EBC47C4002F6227 /* tinyYoloPredict.pb */; };
 		7C8E442C1EB329FC00BA6D76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E442B1EB329FC00BA6D76 /* AppDelegate.swift */; };
@@ -34,7 +28,6 @@
 		7C9DDAA91EB564760037EC52 /* realTimeDetectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9DDAA81EB564760037EC52 /* realTimeDetectorVC.swift */; };
 		7CD2EB071EBC54C700681030 /* advancedTesterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD2EB061EBC54C700681030 /* advancedTesterVC.swift */; };
 		7CD2EB091EBC569700681030 /* helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD2EB081EBC569700681030 /* helpers.swift */; };
-		7CD2EB0C1EBC5F5D00681030 /* downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD2EB0B1EBC5F5D00681030 /* downloader.swift */; };
 		7CE9854E1EB41DB700CA112F /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE9854D1EB41DB700CA112F /* libstdc++.tbd */; };
 		7CE985531EB41F8C00CA112F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE985521EB41F8C00CA112F /* Accelerate.framework */; };
 		7CE985551EB41F9400CA112F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE985541EB41F9400CA112F /* Foundation.framework */; };
@@ -46,17 +39,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7C03C1971EBE3D7D00BCA7E6 /* bvlcReferenceRcnnIlsvrcInit.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = bvlcReferenceRcnnIlsvrcInit.pb; sourceTree = "<group>"; };
-		7C03C1981EBE3D7D00BCA7E6 /* bvlcReferenceRcnnIlsvrcPredict.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = bvlcReferenceRcnnIlsvrcPredict.pb; sourceTree = "<group>"; };
 		7C03C1A51EBE4E9900BCA7E6 /* libCAFFE2_NNPACK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCAFFE2_NNPACK.a; sourceTree = "<group>"; };
 		7C03C1A61EBE4E9900BCA7E6 /* libCAFFE2_PTHREADPOOL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCAFFE2_PTHREADPOOL.a; sourceTree = "<group>"; };
 		7C03C1A91EBE4EAB00BCA7E6 /* libprotobuf-lite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libprotobuf-lite.a"; sourceTree = "<group>"; };
 		7C03C1AA1EBE4EAB00BCA7E6 /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libprotobuf.a; sourceTree = "<group>"; };
 		7C03C1AF1EBE844A00BCA7E6 /* libCaffe2_CPU.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCaffe2_CPU.a; sourceTree = "<group>"; };
-		7C0497FF1EBDB95E000AABD0 /* tinyDarknetInit.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = tinyDarknetInit.pb; sourceTree = "<group>"; };
-		7C0498001EBDB95E000AABD0 /* tinyDarknetPredict.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = tinyDarknetPredict.pb; sourceTree = "<group>"; };
-		7C57027B1EBC47A9002F6227 /* googLeNetInit.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = googLeNetInit.pb; sourceTree = "<group>"; };
-		7C57027C1EBC47A9002F6227 /* googLeNetPredict.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = googLeNetPredict.pb; sourceTree = "<group>"; };
 		7C57027F1EBC47C4002F6227 /* tinyYoloInit.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = tinyYoloInit.pb; sourceTree = "<group>"; };
 		7C5702801EBC47C4002F6227 /* tinyYoloPredict.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = tinyYoloPredict.pb; sourceTree = "<group>"; };
 		7C8E44281EB329FC00BA6D76 /* caffe2-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "caffe2-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,7 +65,6 @@
 		7C9DDAA81EB564760037EC52 /* realTimeDetectorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = realTimeDetectorVC.swift; sourceTree = "<group>"; };
 		7CD2EB061EBC54C700681030 /* advancedTesterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = advancedTesterVC.swift; sourceTree = "<group>"; };
 		7CD2EB081EBC569700681030 /* helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = helpers.swift; sourceTree = "<group>"; };
-		7CD2EB0B1EBC5F5D00681030 /* downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = downloader.swift; sourceTree = "<group>"; };
 		7CE9854D1EB41DB700CA112F /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		7CE985521EB41F8C00CA112F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		7CE985541EB41F9400CA112F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -164,7 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				7CD2EB081EBC569700681030 /* helpers.swift */,
-				7CD2EB0B1EBC5F5D00681030 /* downloader.swift */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -205,14 +190,8 @@
 		7CE985511EB41E2600CA112F /* models */ = {
 			isa = PBXGroup;
 			children = (
-				7C03C1971EBE3D7D00BCA7E6 /* bvlcReferenceRcnnIlsvrcInit.pb */,
-				7C03C1981EBE3D7D00BCA7E6 /* bvlcReferenceRcnnIlsvrcPredict.pb */,
-				7C0497FF1EBDB95E000AABD0 /* tinyDarknetInit.pb */,
-				7C0498001EBDB95E000AABD0 /* tinyDarknetPredict.pb */,
 				7C57027F1EBC47C4002F6227 /* tinyYoloInit.pb */,
 				7C5702801EBC47C4002F6227 /* tinyYoloPredict.pb */,
-				7C57027B1EBC47A9002F6227 /* googLeNetInit.pb */,
-				7C57027C1EBC47A9002F6227 /* googLeNetPredict.pb */,
 				7C8E44471EB32A7D00BA6D76 /* squeezeNetPredict.pb */,
 				7C8E44451EB32A7900BA6D76 /* squeezeNetInit.pb */,
 			);
@@ -282,7 +261,7 @@
 				TargetAttributes = {
 					7C8E44271EB329FC00BA6D76 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 2K46886LCN;
+						DevelopmentTeam = UEY2JVZLMQ;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -312,20 +291,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C5702811EBC47C4002F6227 /* tinyYoloInit.pb in Resources */,
-				7C57027D1EBC47A9002F6227 /* googLeNetInit.pb in Resources */,
-				7C03C19A1EBE3D7D00BCA7E6 /* bvlcReferenceRcnnIlsvrcPredict.pb in Resources */,
-				7C03C1991EBE3D7D00BCA7E6 /* bvlcReferenceRcnnIlsvrcInit.pb in Resources */,
 				7C8E44361EB329FC00BA6D76 /* LaunchScreen.storyboard in Resources */,
 				7C8E44331EB329FC00BA6D76 /* Assets.xcassets in Resources */,
 				7C5702821EBC47C4002F6227 /* tinyYoloPredict.pb in Resources */,
-				7C0498021EBDB95E000AABD0 /* tinyDarknetPredict.pb in Resources */,
 				7C8E44461EB32A7900BA6D76 /* squeezeNetInit.pb in Resources */,
 				7C8E44311EB329FC00BA6D76 /* Main.storyboard in Resources */,
 				7CE985591EB422FA00CA112F /* pugs.jpg in Resources */,
-				7C57027E1EBC47A9002F6227 /* googLeNetPredict.pb in Resources */,
 				7C9DDAA51EB55C7E0037EC52 /* panda.jpeg in Resources */,
 				7C8E44481EB32A7D00BA6D76 /* squeezeNetPredict.pb in Resources */,
-				7C0498011EBDB95E000AABD0 /* tinyDarknetInit.pb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,7 +309,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CD2EB0C1EBC5F5D00681030 /* downloader.swift in Sources */,
 				7C8E442E1EB329FC00BA6D76 /* staticDetectorVC.swift in Sources */,
 				7CE985601EB4290D00CA112F /* UIImage+OpenCV.mm in Sources */,
 				7C9DDAA91EB564760037EC52 /* realTimeDetectorVC.swift in Sources */,
@@ -469,7 +441,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 2K46886LCN;
+				DEVELOPMENT_TEAM = UEY2JVZLMQ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -506,7 +478,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 2K46886LCN;
+				DEVELOPMENT_TEAM = UEY2JVZLMQ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
