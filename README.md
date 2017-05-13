@@ -4,7 +4,7 @@ This is a project to demo how to use `Caffe2`/`OpenCV 2` to build an iOS applica
 
 - [X] iOS (Swift/Objective-C/C++) with Caffe2
 
-- [X] Test build in models with your own photo
+- [X] Test build in models (tinyYolo, SqueezeNet) with your own photo
 
 - [X] Memory Consumption and Time Elapse Data
 
@@ -21,22 +21,30 @@ This is a project to demo how to use `Caffe2`/`OpenCV 2` to build an iOS applica
 - [X] Star us if you like
 
 
+# Wiki
+
+Check our [Wiki](https://github.com/KleinYuan/Caffe2-iOS/wiki)
+
+Feel free to ask any questions from prepare environment to debug on Xcode and we are happy to help you.
+
+
 # For both Beginners and Experts
 
 We provide two stable versions in here with:
-
-- [X] [Lite stable version](https://github.com/KleinYuan/Caffe2-iOS/wiki/Versions#beginners) for beginners to experience how the wrapper work and play with the demo
-
-**Static Classifier**             |  **Real Time Classifier**
-:-------------------------:|:-------------------------:
-![static](https://cloud.githubusercontent.com/assets/8921629/25570968/37b26e02-2ddf-11e7-806f-20c8e2b0d844.PNG)  | ![realtime](https://cloud.githubusercontent.com/assets/8921629/25570965/32d0b43e-2ddf-11e7-816a-925a2adbc579.PNG)
-
 
 - [X] [Exper stable version](https://github.com/KleinYuan/Caffe2-iOS/wiki/Versions#experts) for experts to explore more possibilities
 
 **Static Classifier**             |  **Real Time Classifier**     |**Model Downloader**
 :-------------------------:|:-------------------------:|:-------------------------:
 ![static](https://cloud.githubusercontent.com/assets/8921629/26028288/41835f84-37d2-11e7-83da-8a4e39613459.PNG)  | ![realtime](https://cloud.githubusercontent.com/assets/8921629/26028274/155205d2-37d2-11e7-907a-3c5a3db0faf7.PNG) | ![downloader](https://cloud.githubusercontent.com/assets/8921629/26028283/3627edf8-37d2-11e7-9d45-0b7c6575ede1.PNG)
+
+
+
+- [X] [Lite stable version](https://github.com/KleinYuan/Caffe2-iOS/wiki/Versions#beginners) for beginners to experience how the wrapper work and play with the demo
+
+**Static Classifier**             |  **Real Time Classifier**
+:-------------------------:|:-------------------------:
+![static](https://cloud.githubusercontent.com/assets/8921629/25570968/37b26e02-2ddf-11e7-806f-20c8e2b0d844.PNG)  | ![realtime](https://cloud.githubusercontent.com/assets/8921629/25570965/32d0b43e-2ddf-11e7-816a-925a2adbc579.PNG)
 
 
 ### Dependencies
@@ -104,7 +112,13 @@ There are some potential issues that you will have (I will keep adding if I sens
 
 ![memorycomsuptionhighres](https://cloud.githubusercontent.com/assets/8921629/25568321/066329ec-2db5-11e7-9a65-de6861ed2f25.png)
 
-# Future Work (meaning that it will be here in a few days)
+
+# More Caffe2 Mobile Models
+
+Check [here](https://github.com/KleinYuan/caffe2-yolo)
+
+
+# Future Work
 
 We have a clear scope for this repo below:
 
