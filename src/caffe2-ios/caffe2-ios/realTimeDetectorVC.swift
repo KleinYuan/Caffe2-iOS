@@ -80,7 +80,7 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     }
     
     func classifier(img: UIImage){
-        let start = DispatchTime.now()
+        let start = CACurrentMediaTime()
         if let result = caffe.prediction(regarding: img){
             let sorted = result.map{$0.floatValue}.enumerated().sorted(by: {$0.element > $1.element})[0...10]
             let finalResult = sorted.map{"\($0.element*100)% chance to be: \(classMapping[$0.offset]!)"}.joined(separator: "\n\n")
@@ -89,11 +89,9 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
             self.getMemory()
             self.result = finalResult
         }
-        let end = DispatchTime.now()
-        let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds // <<<<< Difference in nano seconds (UInt64)
-        let timeInterval = Double(nanoTime) / 1_000_000_000 // Technically could overflow for long running tests
-        self.elaspe = "\(timeInterval) seconds"
-        print("Time elapsed of function (classifier): \(timeInterval) seconds")
+        let end = CACurrentMediaTime()
+        self.elaspe = "\(end - start) seconds"
+        print("Time elapsed of function (classifier): \(self.elaspe) seconds")
     }
     
     lazy var cameraSession: AVCaptureSession = {
