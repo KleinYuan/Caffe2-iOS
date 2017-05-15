@@ -91,14 +91,12 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
         print("Switched the model to \(modelPicked)!")
     }
     func classifier(image: UIImage){
-        let start = DispatchTime.now()
+        let start = CACurrentMediaTime()
         self.imageDisplayer.image = image
         let resizedImage = resizeImage(image: image, newWidth: CGFloat(500))
         if let result = caffe.prediction(regarding: resizedImage!){
-            let end = DispatchTime.now()
-            let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds // <<<<< Difference in nano seconds (UInt64)
-            let timeInterval = Double(nanoTime) / 1_000_000_000 // Technically could overflow for long running tests
-            self.elapse = "\(timeInterval) seconds"
+            let end = CACurrentMediaTime()
+            self.elapse = "\(end - start) seconds"
             
             switch modelPicked {
             case "squeezeNet":

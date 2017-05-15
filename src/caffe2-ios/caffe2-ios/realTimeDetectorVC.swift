@@ -80,7 +80,7 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     }
     
     func classifier(img: UIImage){
-        let start = DispatchTime.now()
+        let start = CACurrentMediaTime()
         if let predictedResult = caffe.prediction(regarding: img){
             switch modelPicked {
             case "squeezeNet":
@@ -94,15 +94,11 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                 self.result = "\(predictedResult)"
             }
             self.getMemory()
- 
-            
         }
         
-        let end = DispatchTime.now()
-        let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds // <<<<< Difference in nano seconds (UInt64)
-        let timeInterval = Double(nanoTime) / 1_000_000_000 // Technically could overflow for long running tests
-        self.elapse = "\(timeInterval) seconds"
-        print("Time elapsed of function (classifier): \(timeInterval) seconds")
+        let end = CACurrentMediaTime()
+        self.elapse = "\(end - start) seconds"
+        print("Time elapsed of function (classifier): \(self.elapse) seconds")
     }
     
     lazy var cameraSession: AVCaptureSession = {
