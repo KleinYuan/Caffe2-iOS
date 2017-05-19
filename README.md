@@ -1,3 +1,11 @@
+
+# Slack Channel for Deep Learning Communication:
+
+```
+https://deep-learning-geeks-slack.herokuapp.com/
+```
+
+
 # Caffe2-iOS
 
 This is a project to demo how to use `Caffe2`/`OpenCV 2` to build an iOS application doing real time object classification.
