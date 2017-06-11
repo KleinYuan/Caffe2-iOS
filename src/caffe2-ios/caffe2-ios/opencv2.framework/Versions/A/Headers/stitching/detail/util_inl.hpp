@@ -44,10 +44,8 @@
 #define __OPENCV_STITCHING_UTIL_INL_HPP__
 
 #include <queue>
-#include "opencv2/core.hpp"
+#include "opencv2/core/core.hpp"
 #include "util.hpp" // Make your IDE see declarations
-
-//! @cond IGNORED
 
 namespace cv {
 namespace detail {
@@ -125,7 +123,5 @@ static inline double sqr(double x) { return x * x; }
 
 } // namespace detail
 } // namespace cv
-
-//! @endcond
 
 #endif // __OPENCV_STITCHING_UTIL_INL_HPP__

@@ -1,0 +1,2 @@
+src/caffe2-ios/caffe2-ios/opencv2.framework/Versions/A/opencv2 filter=lfs diff=lfs merge=lfs -text
+src/caffe2-ios/caffe2-ios/*.pb filter=lfs diff=lfs merge=lfs -text
