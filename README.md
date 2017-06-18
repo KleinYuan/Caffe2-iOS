@@ -65,8 +65,15 @@ We provide two stable versions in here with:
 
 [OpenCV 2](http://docs.opencv.org/2.4/doc/tutorials/introduction/ios_install/ios_install.html) 
 
+### LFS Clone
+
+	brew install git-lfs
+	git lfs install
+	git lfs clone https://github.com/KleinYuan/Caffe2-iOS
 
 # Step by Step Tutorial
+
+- [X] Notice, after this [commit](https://github.com/KleinYuan/Caffe2-iOS/commit/e2f05754c296201e43ff52beba0231ae4d392cc1), I put all large files in git LFS and make sure when you clone use [lfs clone](https://github.com/KleinYuan/Caffe2-iOS#LFS-Clone) 
 
 - [X] Clone this repo into a folder, let's say `~/Desktop/`, then you will have `~/Desktop/Caffe2-iOS` when clone is done
 
