@@ -5,7 +5,6 @@
 https://deep-learning-geeks-slack.herokuapp.com/
 ```
 
-
 # Caffe2-iOS
 
 This is a project to demo how to use `Caffe2`/`OpenCV 2` to build an iOS application doing real time object classification.
@@ -28,6 +27,17 @@ This is a project to demo how to use `Caffe2`/`OpenCV 2` to build an iOS applica
 
 - [X] Star us if you like
 
+# Demo
+
+If you are too lazy to build this repo, I also put this in App Store:
+
+[Check it out](https://itunes.apple.com/ca/app/deep-learning-pro/id1239155582)
+
+<img src="https://user-images.githubusercontent.com/8921629/27619097-1847c7f6-5b75-11e7-8b08-f5065978e4c0.jpg" width="50%">
+
+
+* If it navigates you to a different country's app store, you just search `Deep Learning Pro`.
+
 
 # Wiki
 
@@ -44,7 +54,7 @@ We provide two stable versions in here with:
 
 **Static Classifier**             |  **Real Time Classifier**     |**Model Downloader**
 :-------------------------:|:-------------------------:|:-------------------------:
-![static](https://cloud.githubusercontent.com/assets/8921629/26028288/41835f84-37d2-11e7-83da-8a4e39613459.PNG)  | ![realtime](https://cloud.githubusercontent.com/assets/8921629/26028274/155205d2-37d2-11e7-907a-3c5a3db0faf7.PNG) | ![downloader](https://cloud.githubusercontent.com/assets/8921629/26028283/3627edf8-37d2-11e7-9d45-0b7c6575ede1.PNG)
+![static](https://cloud.githubusercontent.com/assets/8921629/26028288/41835f84-37d2-11e7-83da-8a4e39613459.PNG)  | ![realtime](https://user-images.githubusercontent.com/8921629/27618980-66790bde-5b74-11e7-81e3-56495ef1b0c5.PNG) | ![downloader](https://cloud.githubusercontent.com/assets/8921629/26028283/3627edf8-37d2-11e7-9d45-0b7c6575ede1.PNG)
 
 
 
