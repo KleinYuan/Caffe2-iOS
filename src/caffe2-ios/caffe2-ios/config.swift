@@ -15,6 +15,7 @@ let kDownloadedModelNames = "downloadedModelNames"
 let kDownloadedModelInitPaths = "downloadedModelInitPaths"
 let kDownloadedModelPredictPaths = "downloadedModelPredictPaths"
 var session = URLSession()
+var sizeForRealTimeDetector = 227 as CGFloat
 let squeezenetClassMapping =
 [
  0: "tench, Tinca tinca",

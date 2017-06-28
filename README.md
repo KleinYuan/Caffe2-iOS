@@ -54,8 +54,7 @@ We provide two stable versions in here with:
 
 **Static Classifier**             |  **Real Time Classifier**     |**Model Downloader**
 :-------------------------:|:-------------------------:|:-------------------------:
-![static](https://cloud.githubusercontent.com/assets/8921629/26028288/41835f84-37d2-11e7-83da-8a4e39613459.PNG)  | ![realtime](https://user-images.githubusercontent.com/8921629/27618980-66790bde-5b74-11e7-81e3-56495ef1b0c5.PNG) | ![downloader](https://cloud.githubusercontent.com/assets/8921629/26028283/3627edf8-37d2-11e7-9d45-0b7c6575ede1.PNG)
-
+![static](https://cloud.githubusercontent.com/assets/8921629/26028288/41835f84-37d2-11e7-83da-8a4e39613459.PNG)  | ![realtime](https://user-images.githubusercontent.com/8921629/27619593-6dc446fc-5b78-11e7-9297-c19fb22ae774.PNG) | ![downloader](https://cloud.githubusercontent.com/assets/8921629/26028283/3627edf8-37d2-11e7-9d45-0b7c6575ede1.PNG)
 
 
 - [X] [Lite stable version](https://github.com/KleinYuan/Caffe2-iOS/wiki/Versions#beginners) for beginners to experience how the wrapper work and play with the demo
@@ -64,6 +63,8 @@ We provide two stable versions in here with:
 :-------------------------:|:-------------------------:
 ![static](https://cloud.githubusercontent.com/assets/8921629/25570968/37b26e02-2ddf-11e7-806f-20c8e2b0d844.PNG)  | ![realtime](https://cloud.githubusercontent.com/assets/8921629/25570965/32d0b43e-2ddf-11e7-816a-925a2adbc579.PNG)
 
+
+* Note that the number of FPS is subjective to the size you send to the device as well as type of the device. Those numbers were obtained with Height*Width = 227 * 227 on an iPhone 7 Plus.
 
 ### Dependencies
 

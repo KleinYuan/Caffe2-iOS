@@ -160,8 +160,6 @@ class realTimeDetectorVC: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         // Here you can count how many frames are dopped
     }
     
-    
-    
 }
 
 extension CMSampleBuffer {
@@ -172,7 +170,7 @@ extension CMSampleBuffer {
         
         let image = UIImage(ciImage: ciImage, scale: scale, orientation: orientation)
         
-        let resizedImg = resizeBufferImage(image: image, widthRatio: CGFloat(500 / image.size.width), heightRatio: CGFloat(1))
+        let resizedImg = resizeBufferImage(image: image, widthRatio: CGFloat(sizeForRealTimeDetector / image.size.width), heightRatio: CGFloat(sizeForRealTimeDetector / image.size.height))
         
         return resizedImg
     }
