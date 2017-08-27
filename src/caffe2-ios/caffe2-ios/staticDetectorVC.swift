@@ -94,7 +94,7 @@ class staticDetectorVC: UIViewController, UIImagePickerControllerDelegate, UINav
         let start = CACurrentMediaTime()
         self.imageDisplayer.image = image
         let resizedImage = resizeImage(image: image, newWidth: CGFloat(500))
-        if let result = caffe.prediction(regarding: resizedImage!){
+        if let result = caffe.predictionGPU(regarding: resizedImage!){
             let end = CACurrentMediaTime()
             self.elapse = "\(end - start) seconds"
             

@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "Caffe2.h"
 #include "caffe2/core/predictor.h"
+#include "caffe2/core/flags.h"
 #include "caffe2/utils/proto_utils.h"
 
+#include "caffe2/contrib/ios/mpscnn/mpscnn.h"
+CAFFE2_DECLARE_bool(caffe2_force_shared_col_buffer);
 
 void ReadProtoIntoNet(std::string fname, caffe2::NetDef* net) {
     int file = open(fname.c_str(), O_RDONLY);
@@ -80,6 +83,7 @@ CGContextRef CreateRGBABitmapContext (CGImageRef inImage)
 @interface Caffe2(){
     caffe2::NetDef _initNet;
     caffe2::NetDef _predictNet;
+    caffe2::NetDef _mpscnnPredictNet;
     caffe2::Predictor *_predictor;
 }
 
@@ -113,14 +117,12 @@ CGContextRef CreateRGBABitmapContext (CGImageRef inImage)
         ReadProtoIntoNet(initNetPath.UTF8String, &_initNet);
         ReadProtoIntoNet(predictNetPath.UTF8String, &_predictNet);
         
-        _predictNet.set_name("PredictNet");
-        _predictor = new caffe2::Predictor(_initNet, _predictNet);
+        [self loadModelAndTryConvertToMPSCNN];
     }
     return self;
 }
 
 -(void) reloadModel:(nonnull NSString*)initNetFilename predict:(nonnull NSString*)predictNetFilename error:(NSError **)error {
-
     
     if(self){
         delete _predictor;
@@ -133,8 +135,26 @@ CGContextRef CreateRGBABitmapContext (CGImageRef inImage)
         ReadProtoIntoNet(initNetPath.UTF8String, &_initNet);
         ReadProtoIntoNet(predictNetPath.UTF8String, &_predictNet);
         
-        _predictNet.set_name("PredictNet");
-        _predictor = new caffe2::Predictor(_initNet, _predictNet);
+        [self loadModelAndTryConvertToMPSCNN];
+        
+        
+
+    }
+}
+
+// iOS A9 GPU is required
+
+-(void)loadModelAndTryConvertToMPSCNN{
+    _predictNet.set_name("PredictNet");
+    _mpscnnPredictNet.set_name("MPSCNNPredictNet");
+    
+    if (caffe2::tryConvertToMPSCNN(_initNet, _predictNet, &_mpscnnPredictNet)){
+        caffe2::dumpDef(_mpscnnPredictNet);
+        _predictor = new caffe2::Predictor(_initNet, _mpscnnPredictNet);
+        NSLog(@"[Caffe2 Wrapper] MPSCNN Converting successful!");
+    } else {
+        _predictor = new caffe2::Predictor(_initNet,_predictNet);
+        NSLog(@"[Caffe2 Wrapper] MPSCNN Converting failed!");
     }
 }
 
@@ -144,8 +164,7 @@ CGContextRef CreateRGBABitmapContext (CGImageRef inImage)
         ReadProtoIntoNet(initNetFilePath.UTF8String, &_initNet);
         ReadProtoIntoNet(predictNetFilePath.UTF8String, &_predictNet);
         
-        _predictNet.set_name("PredictNet");
-        _predictor = new caffe2::Predictor(_initNet, _predictNet);
+        [self loadModelAndTryConvertToMPSCNN];
     }
 }
 
@@ -154,10 +173,20 @@ CGContextRef CreateRGBABitmapContext (CGImageRef inImage)
     google::protobuf::ShutdownProtobufLibrary();
 }
 
-- (nullable NSArray<NSNumber*>*) predict:(nonnull UIImage*) image{
-    NSMutableArray* result = nil;
-    caffe2::Predictor::TensorVector output_vec;
+
+/*
+ Code below Refers to:
+ https://github.com/caffe2/caffe2/blob/master/caffe2/contrib/ios/ios_caffe_predictor.cc
+ */
+- (nullable NSArray<NSNumber*>*) predictWithGPU:(nonnull UIImage*) image{
+    caffe2::FLAGS_caffe2_force_shared_col_buffer = true;
+    caffe2::ThreadPool* threadpool = _predictor->ws()->GetThreadPool();
+    if (threadpool != nullptr){
+        threadpool->setMinWorkSize(std::numeric_limits<size_t>::max());
+    }
     
+    
+    NSMutableArray* result = nil;
     if (self.busyWithInference) {
         return nil;
     } else {
@@ -165,28 +194,21 @@ CGContextRef CreateRGBABitmapContext (CGImageRef inImage)
     }
     
     CGImageRef inImage = image.CGImage;
-    // Create the bitmap context
-    // We do this to ensure correct color space layout
     CGContextRef cgctx = CreateRGBABitmapContext(inImage);
     if (cgctx == NULL){
         return nil;
     }
     
-    // Get image width, height. We'll use the entire image.
     size_t w = CGImageGetWidth(inImage);
     size_t h = CGImageGetHeight(inImage);
     CGRect rect = {{0,0},{static_cast<CGFloat>(w),static_cast<CGFloat>(h)}};
     
-    // Draw the image to the bitmap context. Once we draw, the memory
-    // allocated for the context for rendering will then contain the
-    // raw image data in the specified color space.
     CGContextDrawImage(cgctx, rect, inImage);
     void *data = CGBitmapContextGetData (cgctx);
     if (_predictor && data) {
         UInt8* pixels = (UInt8*) data;
         caffe2::TensorCPU input;
         
-        // Reasonable dimensions to feed the predictor.
         const int predHeight = (int)CGSizeEqualToSize(self.imageInputDimensions, CGSizeZero) ? int(h) : self.imageInputDimensions.height;
         const int predWidth = (int)CGSizeEqualToSize(self.imageInputDimensions, CGSizeZero) ? int(w) : self.imageInputDimensions.width;
         const int crops = 1;
@@ -196,12 +218,12 @@ CGContextRef CreateRGBABitmapContext (CGImageRef inImage)
         const float wscale = ((float)w) / predWidth;
         const float scale = std::min(hscale, wscale);
         std::vector<float> inputPlanar(crops * channels * predHeight * predWidth);
-        // Scale down the input to a reasonable predictor size.
+        
         for (auto i = 0; i < predHeight; ++i) {
             const int _i = (int) (scale * i);
             for (auto j = 0; j < predWidth; ++j) {
                 const int _j = (int) (scale * j);
-                // The input is of the form RGBA, we only need the RGB part.
+                
                 float red = (float) pixels[(_i * w + _j) * 4 + 0];
                 float green = (float) pixels[(_i * w + _j) * 4 + 1];
                 float blue = (float) pixels[(_i * w + _j) * 4 + 2];
@@ -212,15 +234,17 @@ CGContextRef CreateRGBABitmapContext (CGImageRef inImage)
             }
         }
         
+        
         input.Resize(std::vector<int>({crops, channels, predHeight, predWidth}));
         input.ShareExternalPointer(inputPlanar.data());
         
         caffe2::Predictor::TensorVector input_vec{&input};
+        caffe2::Predictor::TensorVector output_vec;
+        
         _predictor->run(input_vec, &output_vec);
         
         if (output_vec.capacity() > 0) {
             for (auto output : output_vec) {
-                // currently only one dimensional output supported
                 result = [NSMutableArray arrayWithCapacity:output_vec.size()];
                 for (auto i = 0; i < output->size(); ++i) {
                     result[i] = @(output->template data<float>()[i]);
@@ -232,7 +256,7 @@ CGContextRef CreateRGBABitmapContext (CGImageRef inImage)
         self.busyWithInference = false;
     }
     
-    // When finished, release the context/ data
+    
     CGContextRelease(cgctx);
     if (data) {
         free(data);

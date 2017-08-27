@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C03C1A71EBE4E9900BCA7E6 /* libCAFFE2_NNPACK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03C1A51EBE4E9900BCA7E6 /* libCAFFE2_NNPACK.a */; };
-		7C03C1A81EBE4E9900BCA7E6 /* libCAFFE2_PTHREADPOOL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03C1A61EBE4E9900BCA7E6 /* libCAFFE2_PTHREADPOOL.a */; };
-		7C03C1AB1EBE4EAB00BCA7E6 /* libprotobuf-lite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03C1A91EBE4EAB00BCA7E6 /* libprotobuf-lite.a */; };
-		7C03C1AC1EBE4EAB00BCA7E6 /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03C1AA1EBE4EAB00BCA7E6 /* libprotobuf.a */; };
-		7C03C1B01EBE844A00BCA7E6 /* libCaffe2_CPU.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C03C1AF1EBE844A00BCA7E6 /* libCaffe2_CPU.a */; };
+		7C06346D1F513A120060D94E /* libprotobuf-lite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C06346B1F513A120060D94E /* libprotobuf-lite.a */; };
+		7C06346E1F513A120060D94E /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C06346C1F513A120060D94E /* libprotobuf.a */; };
+		7C0634711F513A250060D94E /* libCAFFE2_NNPACK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C06346F1F513A250060D94E /* libCAFFE2_NNPACK.a */; };
+		7C0634721F513A250060D94E /* libCAFFE2_PTHREADPOOL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0634701F513A250060D94E /* libCAFFE2_PTHREADPOOL.a */; };
+		7C0634741F513A370060D94E /* libCaffe2_CPU.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0634731F513A370060D94E /* libCaffe2_CPU.a */; };
+		7C0634791F52B85D0060D94E /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0634751F52B5780060D94E /* Metal.framework */; };
+		7C06347A1F52B8650060D94E /* MetalPerformanceShaders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0634771F52B57E0060D94E /* MetalPerformanceShaders.framework */; };
 		7C5702811EBC47C4002F6227 /* tinyYoloInit.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C57027F1EBC47C4002F6227 /* tinyYoloInit.pb */; };
 		7C5702821EBC47C4002F6227 /* tinyYoloPredict.pb in Resources */ = {isa = PBXBuildFile; fileRef = 7C5702801EBC47C4002F6227 /* tinyYoloPredict.pb */; };
 		7C8E442C1EB329FC00BA6D76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E442B1EB329FC00BA6D76 /* AppDelegate.swift */; };
@@ -39,11 +41,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7C03C1A51EBE4E9900BCA7E6 /* libCAFFE2_NNPACK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCAFFE2_NNPACK.a; sourceTree = "<group>"; };
-		7C03C1A61EBE4E9900BCA7E6 /* libCAFFE2_PTHREADPOOL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCAFFE2_PTHREADPOOL.a; sourceTree = "<group>"; };
-		7C03C1A91EBE4EAB00BCA7E6 /* libprotobuf-lite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libprotobuf-lite.a"; sourceTree = "<group>"; };
-		7C03C1AA1EBE4EAB00BCA7E6 /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libprotobuf.a; sourceTree = "<group>"; };
-		7C03C1AF1EBE844A00BCA7E6 /* libCaffe2_CPU.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCaffe2_CPU.a; sourceTree = "<group>"; };
+		7C06346B1F513A120060D94E /* libprotobuf-lite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libprotobuf-lite.a"; sourceTree = "<group>"; };
+		7C06346C1F513A120060D94E /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libprotobuf.a; sourceTree = "<group>"; };
+		7C06346F1F513A250060D94E /* libCAFFE2_NNPACK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCAFFE2_NNPACK.a; sourceTree = "<group>"; };
+		7C0634701F513A250060D94E /* libCAFFE2_PTHREADPOOL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCAFFE2_PTHREADPOOL.a; sourceTree = "<group>"; };
+		7C0634731F513A370060D94E /* libCaffe2_CPU.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCaffe2_CPU.a; sourceTree = "<group>"; };
+		7C0634751F52B5780060D94E /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		7C0634771F52B57E0060D94E /* MetalPerformanceShaders.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalPerformanceShaders.framework; path = System/Library/Frameworks/MetalPerformanceShaders.framework; sourceTree = SDKROOT; };
 		7C57027F1EBC47C4002F6227 /* tinyYoloInit.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = tinyYoloInit.pb; sourceTree = "<group>"; };
 		7C5702801EBC47C4002F6227 /* tinyYoloPredict.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = tinyYoloPredict.pb; sourceTree = "<group>"; };
 		7C8E44281EB329FC00BA6D76 /* caffe2-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "caffe2-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,17 +86,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C06347A1F52B8650060D94E /* MetalPerformanceShaders.framework in Frameworks */,
+				7C0634791F52B85D0060D94E /* Metal.framework in Frameworks */,
 				7C9DDAA71EB5627D0037EC52 /* AVFoundation.framework in Frameworks */,
+				7C0634721F513A250060D94E /* libCAFFE2_PTHREADPOOL.a in Frameworks */,
 				7CE985571EB41F9B00CA112F /* UIKit.framework in Frameworks */,
 				7CE985551EB41F9400CA112F /* Foundation.framework in Frameworks */,
 				7CE985531EB41F8C00CA112F /* Accelerate.framework in Frameworks */,
-				7C03C1AC1EBE4EAB00BCA7E6 /* libprotobuf.a in Frameworks */,
-				7C03C1B01EBE844A00BCA7E6 /* libCaffe2_CPU.a in Frameworks */,
+				7C0634741F513A370060D94E /* libCaffe2_CPU.a in Frameworks */,
+				7C0634711F513A250060D94E /* libCAFFE2_NNPACK.a in Frameworks */,
+				7C06346E1F513A120060D94E /* libprotobuf.a in Frameworks */,
+				7C06346D1F513A120060D94E /* libprotobuf-lite.a in Frameworks */,
 				7CE9854E1EB41DB700CA112F /* libstdc++.tbd in Frameworks */,
 				7C8E44521EB32EAF00BA6D76 /* opencv2.framework in Frameworks */,
-				7C03C1A81EBE4E9900BCA7E6 /* libCAFFE2_PTHREADPOOL.a in Frameworks */,
-				7C03C1A71EBE4E9900BCA7E6 /* libCAFFE2_NNPACK.a in Frameworks */,
-				7C03C1AB1EBE4EAB00BCA7E6 /* libprotobuf-lite.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +163,8 @@
 		7CE9854C1EB41DB700CA112F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C0634771F52B57E0060D94E /* MetalPerformanceShaders.framework */,
+				7C0634751F52B5780060D94E /* Metal.framework */,
 				7C9DDAA61EB5627D0037EC52 /* AVFoundation.framework */,
 				7CE985561EB41F9B00CA112F /* UIKit.framework */,
 				7CE985541EB41F9400CA112F /* Foundation.framework */,
@@ -169,11 +177,11 @@
 		7CE9854F1EB41DFA00CA112F /* caffe2 */ = {
 			isa = PBXGroup;
 			children = (
-				7C03C1AF1EBE844A00BCA7E6 /* libCaffe2_CPU.a */,
-				7C03C1A91EBE4EAB00BCA7E6 /* libprotobuf-lite.a */,
-				7C03C1AA1EBE4EAB00BCA7E6 /* libprotobuf.a */,
-				7C03C1A51EBE4E9900BCA7E6 /* libCAFFE2_NNPACK.a */,
-				7C03C1A61EBE4E9900BCA7E6 /* libCAFFE2_PTHREADPOOL.a */,
+				7C0634731F513A370060D94E /* libCaffe2_CPU.a */,
+				7C06346F1F513A250060D94E /* libCAFFE2_NNPACK.a */,
+				7C0634701F513A250060D94E /* libCAFFE2_PTHREADPOOL.a */,
+				7C06346B1F513A120060D94E /* libprotobuf-lite.a */,
+				7C06346C1F513A120060D94E /* libprotobuf.a */,
 			);
 			name = caffe2;
 			sourceTree = "<group>";
@@ -455,6 +463,7 @@
 					"$(SRCROOT)/../caffe2/third_party/eigen",
 				);
 				INFOPLIST_FILE = "caffe2-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -492,6 +501,7 @@
 					"$(SRCROOT)/../caffe2/third_party/eigen",
 				);
 				INFOPLIST_FILE = "caffe2-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

@@ -15,11 +15,13 @@
 
 - (null_unspecified instancetype)init UNAVAILABLE_ATTRIBUTE;
 
+- (nullable)loadModelAndTryConvertToMPSCNN;
+
 - (null_unspecified instancetype) init:(nonnull NSString*)initNetFilename predict:(nonnull NSString*)predictNetFilename error:(NSError * _Nullable * _Nullable)error
 NS_SWIFT_NAME(init(initNetNamed:predictNetNamed:));
 
-- (nullable NSArray<NSNumber*>*) predict:(nonnull UIImage*) image
-NS_SWIFT_NAME(prediction(regarding:));
+- (nullable NSArray<NSNumber*>*) predictWithGPU:(nonnull UIImage*) image
+NS_SWIFT_NAME(predictionGPU(regarding:));
 
 - (nullable) reloadModel:(nonnull NSString*)initNetFilename predict:(nonnull NSString*)predictNetFilename error:(NSError * _Nullable * _Nullable)error
 NS_SWIFT_NAME(reloadModel(initNetNamed:predictNetNamed:));
